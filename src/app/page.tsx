@@ -1,113 +1,120 @@
-import Image from "next/image";
+'use client';
+import PrimaryBtn from '@/components/ui/PrimaryBtn';
+import Image from 'next/image';
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    return (
+        <div className="container">
+            <nav className="flex  justify-between items-center py-8">
+                <h1 className="text-2xl	 font-medium text-navTextColor ">
+                    Hein Htet Zaw
+                </h1>
+                <ul className="flex gap-[40px] cursor-pointer text-lg	     font-medium text-navTextColor">
+                    <li>About</li>
+                    <li>Experience</li>
+                    <li>Projects</li>
+                    <li>Contact</li>
+                </ul>
+                <PrimaryBtn
+                    handleClick={() => {}}
+                    text="Email Me"
+                />
+            </nav>
+            <section className="pt-[100px] flex justify-between items-center  gap-[100px]  ">
+                <div className="w-1/2">
+                    <p className="flex gap-2 mb-4  text-2xl text-textColor	 items-center">
+                        Welcome to my Portfolio{' '}
+                        <Image
+                            alt="waveIcon"
+                            src="/image/wave.avif"
+                            width={25}
+                            height={25}
+                            className="block basis-[16px] h-fit"
+                        />
+                    </p>
+                    <h1 className="font-bold  leading-[75px] text-textColor  text-[60px] ">
+                        Hi I'm
+                    </h1>
+                    <h1 className="font-bold  leading-[75px] text-secondary  text-[60px] ">
+                        Hein Htet Zaw
+                    </h1>
+                    <h1 className="font-bold  leading-[75px] text-textColor  text-[60px] ">
+                        Frontend Developer
+                    </h1>
+                    <div className="flex gap-5 mt-5 mb-7 ">
+                        <PrimaryBtn
+                            text="Contact with Me "
+                            handleClick={() => {}}
+                        />
+                        <PrimaryBtn
+                            outline={true}
+                            text="My Resume"
+                            handleClick={() => {}}
+                        />
+                    </div>
+                    <div className="flex cursor-pointer  gap-5 ml-2">
+                        <Image
+                            alt="github"
+                            src="/image/github.png"
+                            width={30}
+                            height={30}
+                        />
+                        <Image
+                            alt="linkedin"
+                            src="/image/linkedin.png"
+                            width={30}
+                            height={30}
+                        />
+                    </div>
+                </div>
+                <div className="w-1/2 flex justify-end relative">
+                    <Image
+                        alt="waveIcon"
+                        src="/image/2024-10-27 13.03.45.jpg"
+                        width="450"
+                        height={'450'}
+                        className=" h-[450px] object-cover object-top rounded-full"
+                    />
+                </div>
+            </section>
+            <section className="pt-[120px] ">
+                <h3 className="text-center text-lg"> Get To know More</h3>
+                <h1 className="text-center font-bold mb-10 leading-[75px]   text-[50px] text-secondary">
+                    About Me
+                </h1>
+                <div className="flex items-center gap-10  justify-between">
+                    <div className="w-1/  flex justify-start">
+                        <Image
+                            alt="waveIcon"
+                            src="/image/profolio_image.jpg"
+                            width="500"
+                            height={'660'}
+                            className=" w-auto h-[660px] object-cover object-top rounded-lg"
+                        />
+                    </div>
+                    <div className="w-1/2 ">
+                        <h2 className="text-[40px]  text-textColor font-bold leading-[50px]">
+                            I'm a JavaScript FullStack Developer with{' '}
+                            <span className="text-secondary">
+                                3 years of industry experience{' '}
+                            </span>
+                        </h2>
+
+                        <p className="mt-6 text-lg leading-7 text-justify font-normal text-navTextColor">
+                            I'm a JavaScript Full Stack Developer with a strong
+                            focus on front-end development. I have a proven
+                            record in building high-quality web and mobile
+                            applications using React and React Native, with 3
+                            years of industry experience. Skilled in JavaScript
+                            and TypeScript, I'm proficient in frameworks like
+                            React, Next.js, Vue.js, and backend with
+                            Node.js/Express. Adaptable to various technologies,
+                            I'm passionate about continuous learning and
+                            dedicated to delivering excellent results.
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    );
 }

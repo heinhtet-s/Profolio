@@ -15,7 +15,6 @@
         "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
         "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
         "strictNullChecks": true /* When type checking, take into account 'null' and 'undefined'. */,
-
         "incremental": true,
         "plugins": [
             {
@@ -24,7 +23,8 @@
         ],
         "paths": {
             "@/*": ["./src/*"]
-        }
+        },
+        "target": "ES2017"
     },
     "include": [
         "next-env.d.ts",
