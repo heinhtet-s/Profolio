@@ -14,6 +14,11 @@ const config: Config = {
                 navTextColor: '#333333',
                 textColor: '#222222'
             },
+            fontSize: {
+                heroTitle: '3.75rem',
+                title: '3.125rem',
+                subTitle: '2.5rem'
+            },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                 'gradient-conic':

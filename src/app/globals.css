@@ -5,9 +5,13 @@
 * {
     font-family: 'Work Sans', sans-serif;
 }
-html {
-    scroll-behavior: smooth;
+
+body {
+    margin: 0px;
+
+    /* cursor: wait; Add after Preloader*/
 }
+
 @layer components {
     .container {
         padding-left: 80px;
