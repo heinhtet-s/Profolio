@@ -10,7 +10,7 @@ const config: Config = {
         extend: {
             colors: {
                 secondary: '#0077FF',
-                secondaryHover: '#053c7a',
+                secondaryHover: '#00489A',
                 navTextColor: '#333333',
                 textColor: '#222222'
             },

@@ -5,20 +5,22 @@ type BtnProps = {
     text: string;
     handleClick: () => void;
     outline?: boolean;
+    className?: string;
 };
 const PrimaryBtn: React.FC<BtnProps> = ({
     text,
     handleClick,
-    outline = false
+    outline = false,
+    className
 }) => {
     return (
         <button
             onClick={handleClick}
             className={twMerge(
-                'px-5 text-white duration-700 font-medium transition-all	 text-lg  cursor-pointer	 rounded-[50px] py-2',
                 outline
                     ? 'border border-secondary text-secondary hover:bg-secondary hover:text-white '
-                    : 'bg-secondary hover:bg-secondaryHover '
+                    : 'bg-secondary hover:bg-secondaryHover ',
+                `px-5 text-white duration-700 font-medium transition-all	 text-lg  cursor-pointer	 rounded-[50px] py-2 ${className || ''}`
             )}>
             {text}
         </button>
