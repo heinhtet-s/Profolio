@@ -15,39 +15,40 @@ type ProjectCardComponentProps = {
 };
 
 const ProjectCardComponent = ({
-    data
-    // setIsHovered
+    data,
+    setIsHovered
 }: {
     data: ProjectCardComponentProps;
-    // setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-    // const handleMouseEnter = React.useCallback(() => {
-    //     setIsHovered(true);
-    // }, [setIsHovered]);
+    const handleMouseEnter = React.useCallback(() => {
+        setIsHovered(true);
+    }, [setIsHovered]);
 
-    // const handleMouseLeave = React.useCallback(() => {
-    //     setIsHovered(false);
-    // }, [setIsHovered]);
+    const handleMouseLeave = React.useCallback(() => {
+        setIsHovered(false);
+    }, [setIsHovered]);
     const router = useRouter();
     return (
         <MotionDiv
-            // // initial={{ opacity: 0, scale: 0.8 }} // Starts lower
-            // initial={{ opacity: 0 }}
-            // whileInView={{ opacity: 1 }}
-            // viewport={{ once: true }}
-            // transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8 }} // Starts lower
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="cursor-pointer group"
             onClick={() => {
                 router.push(data?.link);
             }}
-            // onMouseEnter={handleMouseEnter}
-            // onMouseLeave={handleMouseLeave}
-        >
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}>
             <div className="w-full   h-[300px] sm:h-[400px] md:h-[550px]  relative transition-transform duration-700 ease-in-out overflow-hidden group-hover:scale-95">
                 <Image
                     alt="projectImage"
                     src={data?.img}
-                    fill={true}
+                    quality={70} // Optimize image quality
+                    placeholder="blur"
+                    priority
+                    fill
                     className="object-cover  object-center transition-transform duration-700 ease-in-out"
                 />
 
@@ -74,12 +75,11 @@ const ProjectCardComponent = ({
     );
 };
 
-//     {
-//     setIsHovered
-// }: {
-//     setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
-// }
-const ProjectCardSection = () => {
+const ProjectCardSection = ({
+    setIsHovered
+}: {
+    setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
     return (
         <div
             id="projects"
@@ -93,7 +93,7 @@ const ProjectCardSection = () => {
                 {PROJECTCARDDATA?.map((el, key) => (
                     <div key={key}>
                         <ProjectCardComponent
-                            // setIsHovered={setIsHovered}
+                            setIsHovered={setIsHovered}
                             data={el}
                         />
                     </div>
