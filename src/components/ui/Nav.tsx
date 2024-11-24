@@ -54,7 +54,7 @@ const Navbar = () => {
             )} */}
             <MotionNav
                 ref={ref}
-                className="fixed   md:relative  top-0 left-0 w-full flex justify-between items-center py-8 px-6 md:px-12 bg-white z-20"
+                className="fixed   md:relative  top-0 left-0 w-full flex justify-between items-center py-8 px-6 md:px-8 bg-white z-20"
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -100, opacity: 0 }}

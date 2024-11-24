@@ -11,7 +11,7 @@ const HeroSection = () => {
     return (
         <section
             ref={ref}
-            className=" pt-[100px] md:pt-[50px] sm:pt-[100px] pb-[100px] sm:pb-[200px] flex flex-col sm:flex-row justify-between items-center gap-[50px] sm:gap-[100px] px-4 sm:px-8">
+            className=" pt-[100px] md:py-[50px] md:pt-[50px] sm:pt-[100px] pb-[100px] sm:pb-[200px] flex flex-col sm:flex-row justify-between items-center gap-[50px] sm:gap-[100px] px-4 sm:px-8">
             <MotionDiv
                 className="w-full sm:w-1/2"
                 initial={{ opacity: 0, x: -100 }}

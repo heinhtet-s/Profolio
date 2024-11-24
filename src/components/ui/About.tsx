@@ -5,7 +5,7 @@ import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
 const AboutMeSection = () => {
     return (
         <section
-            className="pt-[100px]"
+            className="pt-[100px] md:py-[50px]"
             id="about">
             <MotionH2
                 className="text-center text-lg"

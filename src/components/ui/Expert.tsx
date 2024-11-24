@@ -45,7 +45,7 @@ const ExpertiseSection = () => {
     };
 
     return (
-        <section className="pt-[100px] mb-10">
+        <section className="pt-[100px] md:py-[50px] mb-10">
             <h3 className="text-center text-lg">Explore My</h3>
             <h1 className="text-center font-bold mb-10 leading-[45px] sm:leading-[75px] text-title text-secondary text-2xl sm:text-4xl">
                 Expertise Areas

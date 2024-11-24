@@ -59,7 +59,7 @@ const CareerSection = () => {
     return (
         <MotionSection
             id="experience"
-            className="pt-[100px] mb-10"
+            className="pt-[100px] md:py-[50px] mb-10"
             initial={{ opacity: 0, y: 30 }} // Starts from below (down to up)
             whileInView={{ opacity: 1, y: 0 }} // Moves to its final position (up)
             viewport={{ once: true }}

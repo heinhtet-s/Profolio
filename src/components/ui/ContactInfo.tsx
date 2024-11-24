@@ -47,7 +47,7 @@ const ContactInfo: React.FC = () => {
     return (
         <section
             id={'contact'}
-            className="pt-[80px] container pb-[80px] bg-secondary">
+            className="pt-[100px] container pb-[80px] bg-secondary">
             <MotionDiv
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

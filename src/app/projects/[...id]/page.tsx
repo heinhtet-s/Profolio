@@ -29,18 +29,27 @@ type Project = {
 
 const page = () => {
     const { id } = useParams<{ id: string[] }>();
-    switch (id[0]) {
-        case 'sdax':
-            return <ProjectDetailComponent data={SDAX} />;
-        case 'flashmall':
-            return <ProjectDetailComponent data={FLASHMALL} />;
-        case 'teen-up':
-            return <ProjectDetailComponent data={TEENUP} />;
-        case 'pruidea':
-            return <ProjectDetailComponent data={PRUIDEA_LMS} />;
-        default:
-            return <></>;
-    }
+
+    const getProjectData = (): Project | null => {
+        switch (id?.[0]) {
+            case 'sdax':
+                return SDAX;
+            case 'flashmall':
+                return FLASHMALL;
+            case 'teen-up':
+                return TEENUP;
+            case 'pruidea':
+                return PRUIDEA_LMS;
+            default:
+                return null;
+        }
+    };
+
+    const projectData = getProjectData();
+
+    if (!projectData) return <div>Project not found</div>;
+
+    return <ProjectDetailComponent data={projectData} />;
 };
 
 const fadeInVariants = {
@@ -54,11 +63,11 @@ const fadeInVariants = {
 
 const ProjectDetailComponent = ({ data }: { data: Project }) => {
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container">
             <Navbar />
-            <MotionSection className="pt-[100px]  pb-[50px] ">
+            <MotionSection className="pt-[100px]  px-6 md:px-8  pb-[50px] ">
                 <MotionH1
-                    className="font-bold text-3xl md:text-5xl leading-tight text-navTextColor text-center md:text-left"
+                    className="font-bold text-3xl md:text-5xl leading-tight text-navTextColor  md:text-left"
                     whileInView="visible"
                     viewport={{ once: true }}
                     initial="hidden"
