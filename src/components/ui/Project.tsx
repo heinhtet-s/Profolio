@@ -2,13 +2,12 @@
 'use client';
 import { PROJECTCARDDATA } from '@/lib/constant';
 import { MotionDiv } from '@/lib/utils';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
 type ProjectCardComponentProps = {
-    // img: StaticImageData;
-    img: string;
+    img: StaticImageData;
     title: string;
     type: string;
     desc: string;
