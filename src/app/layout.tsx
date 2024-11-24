@@ -6,7 +6,7 @@ import LayoutProvider from '@/components/ui/LayoutProvider';
 export const metadata: Metadata = {
     title: 'Hein Htet Zaw | FullStack Developer Portfolio',
     description:
-        "Welcome to Hein Htet Zaw's portfolio. Explore projects showcasing expertise in React, Next.js, Tailwind CSS, and modern frontend development."
+        "Welcome to Hein Htet Zaw's portfolio. Explore projects showcasing expertise in React, Next.js,Node.js, Tailwind CSS, and modern frontend development."
 };
 export const viewport: Viewport = {
     width: 'device-width',

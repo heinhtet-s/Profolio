@@ -42,7 +42,7 @@ const ProjectCardComponent = ({
                     alt="projectImage"
                     src={data?.img}
                     quality={75} // Optimize image quality
-                    loading="lazy" // Lazy loading for performance
+                    loading="eager" // Lazy loading for performance
                     fill={true}
                     className="object-cover object-center transition-transform duration-700 ease-in-out"
                 />
