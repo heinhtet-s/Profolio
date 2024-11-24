@@ -42,15 +42,17 @@ const ProjectCardComponent = ({
             // onMouseEnter={handleMouseEnter}
             // onMouseLeave={handleMouseLeave}
         >
-            <div className="w-full relative transition-transform duration-700 ease-in-out overflow-hidden group-hover:scale-95">
+            <div className="w-full h-[300px] sm:h-[400px] md:h-[550px]  relative transition-transform duration-700 ease-in-out overflow-hidden group-hover:scale-95">
                 <Image
                     alt="projectImage"
                     src={data?.img}
-                    quality={75} // Optimize image quality
-                    loading="lazy" // Lazy loading for performance
-                    width={550}
-                    height={400}
-                    className="object-cover  h-[300px] sm:h-[400px] md:h-[550px] object-center transition-transform duration-700 ease-in-out"
+                    blurDataURL={data?.img}
+                    quality={50} // Optimize image quality
+                    placeholder="blur"
+                    fill
+                    sizes="100vw"
+                    priority
+                    className="object-cover  object-center transition-transform duration-700 ease-in-out"
                 />
             </div>
             <div className="pt-5 mb-5 transition-all duration-700 ease-in-out group-hover:-translate-y-4 group-hover:px-4">
