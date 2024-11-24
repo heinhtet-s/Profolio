@@ -1,3 +1,4 @@
+'use client';
 import { AnimatePresence, useInView } from 'framer-motion';
 import { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react';
 import {

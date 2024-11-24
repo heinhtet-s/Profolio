@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import Navbar from '@/components/ui/Nav';
-import CustomCursor from '@/components/share/CustomCursor';
+// import CustomCursor from '@/components/share/CustomCursor';
 import HeroSection from '@/components/ui/HeroSection';
 import AboutMeSection from '@/components/ui/About';
 import ExpertiseSection from '@/components/ui/Expert';
@@ -14,7 +14,7 @@ import ContactInfo from '@/components/ui/ContactInfo';
 
 export default function Home() {
     console.log('hello');
-    const [isVisible, setIsVisible] = useState(true);
+    // const [isVisible, setIsVisible] = useState(true);
     useEffect(() => {
         (async () => {
             const LocomotiveScroll = (await import('locomotive-scroll'))
@@ -29,16 +29,17 @@ export default function Home() {
         })();
     }, []);
     const [isHovered, setIsHovered] = useState(false); // Track if cursor is hovering over a project card
-
+    console.log(isHovered);
     return (
         <div
-            onMouseEnter={() => setIsVisible(true)}
-            onMouseLeave={() => setIsVisible(false)}>
-            <CustomCursor
+        // onMouseEnter={() => setIsVisible(true)}
+        // onMouseLeave={() => setIsVisible(false)}
+        >
+            {/* <CustomCursor
                 isHovered={isHovered}
                 isVisible={isVisible}
                 setIsVisible={setIsVisible}
-            />
+            /> */}
 
             <div className="container">
                 <Navbar />

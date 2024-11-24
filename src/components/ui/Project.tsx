@@ -20,6 +20,13 @@ const ProjectCardComponent = ({
     data: ProjectCardComponentProps;
     setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+    const handleMouseEnter = React.useCallback(() => {
+        setIsHovered(true);
+    }, [setIsHovered]);
+
+    const handleMouseLeave = React.useCallback(() => {
+        setIsHovered(false);
+    }, [setIsHovered]);
     const router = useRouter();
     return (
         <MotionDiv
@@ -31,12 +38,8 @@ const ProjectCardComponent = ({
             onClick={() => {
                 router.push(data?.link);
             }}
-            onMouseEnter={() => {
-                setIsHovered(true);
-            }}
-            onMouseLeave={() => {
-                setIsHovered(false);
-            }}>
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}>
             <div className="w-full relative h-[300px] sm:h-[400px] md:h-[550px] transition-transform duration-700 ease-in-out overflow-hidden group-hover:scale-95">
                 <Image
                     alt="projectImage"
