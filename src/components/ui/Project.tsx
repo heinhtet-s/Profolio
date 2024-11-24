@@ -2,7 +2,7 @@
 'use client';
 import { PROJECTCARDDATA } from '@/lib/constant';
 import { MotionDiv } from '@/lib/utils';
-import Image, { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
@@ -44,7 +44,7 @@ const ProjectCardComponent = ({
             // onMouseLeave={handleMouseLeave}
         >
             <div className="w-full  relative transition-transform duration-700 ease-in-out overflow-hidden group-hover:scale-95">
-                <Image
+                {/* <Image
                     alt="projectImage"
                     src={data?.img}
                     quality={50} // Optimize image quality
@@ -53,7 +53,7 @@ const ProjectCardComponent = ({
                     loading="eager"
                     priority
                     className="object-cover  h-[300px] sm:h-[400px] md:h-[550px]  object-center transition-transform duration-700 ease-in-out"
-                />
+                /> */}
 
                 {/* <img
                     alt="projectImage"
