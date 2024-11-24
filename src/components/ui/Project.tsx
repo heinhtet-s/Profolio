@@ -50,6 +50,7 @@ const ProjectCardComponent = ({
                     quality={50} // Optimize image quality
                     placeholder="blur"
                     sizes="100vw"
+                    loading="eager"
                     priority
                     className="object-cover  h-[300px] sm:h-[400px] md:h-[550px]  object-center transition-transform duration-700 ease-in-out"
                 />
