@@ -30,11 +30,11 @@ const ProjectCardComponent = ({
     const router = useRouter();
     return (
         <MotionDiv
-            // initial={{ opacity: 0, scale: 0.8 }} // Starts lower
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            // // initial={{ opacity: 0, scale: 0.8 }} // Starts lower
+            // initial={{ opacity: 0 }}
+            // whileInView={{ opacity: 1 }}
+            // viewport={{ once: true }}
+            // transition={{ duration: 0.8 }}
             className="cursor-pointer group"
             onClick={() => {
                 router.push(data?.link);
@@ -84,11 +84,12 @@ const ProjectCardSection = ({
 
             <div className="grid grid-cols-1 lg:grid-cols-2  gap-10 sm:gap-16 lg:gap-24">
                 {PROJECTCARDDATA?.map((el, key) => (
-                    <ProjectCardComponent
-                        setIsHovered={setIsHovered}
-                        data={el}
-                        key={key}
-                    />
+                    <div key={key}>
+                        <ProjectCardComponent
+                            setIsHovered={setIsHovered}
+                            data={el}
+                        />
+                    </div>
                 ))}
             </div>
         </div>
