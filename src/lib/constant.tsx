@@ -14,7 +14,7 @@ import {
     SiTypescript
 } from 'react-icons/si';
 import PROJECTIMAG1 from '../../public/image/project8.webp';
-// import PROJECTIMAG2 from '../../public/image/project_image5.webp';
+import PROJECTIMAG2 from '../../public/image/project_image6.webp';
 import PROJECTIMAG3 from '../../public/image/project2.webp';
 import PROJECTIMAG4 from '../../public/image/project6.webp';
 
@@ -45,7 +45,7 @@ const PROJECTCARDDATA = [
         desc: 'The SDAX Investor Portal is a secure site where investors can manage and track their digital asset investments, view performance, and access important documents—all designed for both individual and institutional investors.'
     },
     {
-        img: PROJECTIMAG1,
+        img: PROJECTIMAG2,
         title: 'Teen Up',
         type: 'frontend',
         link: '/projects/teen-up',
@@ -256,7 +256,7 @@ const SDAX: ProjectProps = {
                 'The SDAX Crypto Exchange is a secure and scalable platform for trading digital assets. It aims to provide a smooth and easy trading experience with strong security features, real-time updates, and a user-friendly interface. The platform includes key features such as user registration, wallet integration, trading charts, and asset management, all built with the latest technologies.',
             link: 'https://investor.sdax.co/register',
             image: {
-                src: '/image/project_detail_image_2.webp',
+                src: '/image/project_detail1.webp',
                 alt: 'project showcase'
             }
         },
@@ -287,7 +287,7 @@ const SDAX: ProjectProps = {
                 }
             ],
             image: {
-                src: '/image/project_detail_image.webp',
+                src: '/image/project_detail_image_1.png',
                 alt: 'features showcase'
             }
         },

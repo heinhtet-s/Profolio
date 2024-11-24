@@ -68,7 +68,7 @@ const ProjectDetailComponent = ({ data }: { data: Project }) => {
 
                 {/* First section */}
                 <MotionDiv
-                    className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10 md:my-20"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10 md:my-20 items-center"
                     whileInView="visible"
                     initial="hidden"
                     viewport={{ once: true, amount: 0.4 }}
