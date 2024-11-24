@@ -13,6 +13,11 @@ import {
     SiSocketdotio,
     SiTypescript
 } from 'react-icons/si';
+import PROJECTIMAG1 from '../../public/image/project8.webp';
+import PROJECTIMAG2 from '../../public/image/project_image5.webp';
+import PROJECTIMAG3 from '../../public/image/project2.webp';
+import PROJECTIMAG4 from '../../public/image/project6.webp';
+
 type Section = {
     description?: string;
     additionalInfo?: string;
@@ -33,28 +38,28 @@ type ProjectProps = {
 };
 const PROJECTCARDDATA = [
     {
-        img: '/image/project8.webp',
+        img: PROJECTIMAG1,
         title: 'SDAX',
         link: '/projects/sdax',
         type: 'frontend',
         desc: 'The SDAX Investor Portal is a secure site where investors can manage and track their digital asset investments, view performance, and access important documents—all designed for both individual and institutional investors.'
     },
     {
-        img: '/image/project_image5.webp',
+        img: PROJECTIMAG2,
         title: 'Teen Up',
         type: 'frontend',
         link: '/projects/teen-up',
         desc: 'TeeUp is a social platform for teens to connect with friends, join groups, and access resources that support learning and personal growth in a safe, engaging community.'
     },
     {
-        img: '/image/project2.webp',
+        img: PROJECTIMAG3,
         title: 'PRUIdeas',
         type: 'fullstack',
         link: '/projects/pruidea',
         desc: 'A comprehensive learning management system designed for   students, teachers, and administrators, featuring project management, submission capabilities, reactions, and rewards for outstanding projects.'
     },
     {
-        img: '/image/project6.webp',
+        img: PROJECTIMAG4,
         title: 'FlashMall',
         type: 'fullstack',
         link: '/projects/flashmall',
