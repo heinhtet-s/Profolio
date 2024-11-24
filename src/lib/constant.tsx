@@ -119,7 +119,7 @@ const FLASHMALL: ProjectProps = {
             link: 'https://flashmallmm.com/',
 
             image: {
-                src: '/image/project_detail_image_9.png',
+                src: '/image/project_detail_image_9.webp',
                 alt: 'project showcase'
             }
         },
@@ -141,7 +141,7 @@ const FLASHMALL: ProjectProps = {
                 }
             ],
             image: {
-                src: '/image/project_detail_image_10.png',
+                src: '/image/project_detail_image_10.webp',
                 alt: 'features showcase'
             }
         },
@@ -155,7 +155,7 @@ const FLASHMALL: ProjectProps = {
                 'Enforced Firebase security rules to safeguard data and implemented secure authentication and authorization mechanisms for user access control.'
             ],
             image: {
-                src: '/image/project_detail_image_11.png',
+                src: '/image/project_detail_image_11.webp',
                 alt: 'features showcase'
             }
         }
@@ -256,7 +256,7 @@ const SDAX: ProjectProps = {
                 'The SDAX Crypto Exchange is a secure and scalable platform for trading digital assets. It aims to provide a smooth and easy trading experience with strong security features, real-time updates, and a user-friendly interface. The platform includes key features such as user registration, wallet integration, trading charts, and asset management, all built with the latest technologies.',
             link: 'https://investor.sdax.co/register',
             image: {
-                src: '/image/project_detail1.webp',
+                src: '/image/project_detail_image_1.png',
                 alt: 'project showcase'
             }
         },
@@ -287,7 +287,7 @@ const SDAX: ProjectProps = {
                 }
             ],
             image: {
-                src: '/image/project_detail_image_1.png',
+                src: '/image/project_detail1.webp',
                 alt: 'features showcase'
             }
         },
