@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import { PROJECTCARDDATA } from '@/lib/constant';
 import { MotionDiv } from '@/lib/utils';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
@@ -43,7 +44,7 @@ const ProjectCardComponent = ({
             // onMouseLeave={handleMouseLeave}
         >
             <div className="w-full h-[300px] sm:h-[400px] md:h-[550px]  relative transition-transform duration-700 ease-in-out overflow-hidden group-hover:scale-95">
-                <Image
+                {/* <Image
                     alt="projectImage"
                     src={data?.img}
                     blurDataURL={data?.img}
@@ -53,6 +54,13 @@ const ProjectCardComponent = ({
                     sizes="100vw"
                     priority
                     className="object-cover  object-center transition-transform duration-700 ease-in-out"
+                /> */}
+                // eslint-disable-next-line @next/next/no-img-element,
+                @next/next/no-img-element
+                <img
+                    alt="projectImage"
+                    src={data?.img}
+                    className="object-cover  h-[300px] sm:h-[400px] md:h-[550px]   object-center transition-transform duration-700 ease-in-out"
                 />
             </div>
             <div className="pt-5 mb-5 transition-all duration-700 ease-in-out group-hover:-translate-y-4 group-hover:px-4">
