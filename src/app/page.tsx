@@ -1,5 +1,5 @@
 'use client';
-import 'locomotive-scroll/bundled/locomotive-scroll.css';
+// import 'locomotive-scroll/bundled/locomotive-scroll.css';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import Navbar from '@/components/ui/Nav';
