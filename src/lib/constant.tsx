@@ -13,10 +13,10 @@ import {
     SiSocketdotio,
     SiTypescript
 } from 'react-icons/si';
-import PROJECTIMAG1 from '../../public/image/project8.webp';
-import PROJECTIMAG2 from '../../public/image/project_image5.webp';
+// import PROJECTIMAG1 from '../../public/image/project8.webp';
+// import PROJECTIMAG2 from '../../public/image/project_image5.webp';
 import PROJECTIMAG3 from '../../public/image/project2.webp';
-import PROJECTIMAG4 from '../../public/image/project6.webp';
+// import PROJECTIMAG4 from '../../public/image/project6.webp';
 
 type Section = {
     description?: string;
@@ -38,14 +38,14 @@ type ProjectProps = {
 };
 const PROJECTCARDDATA = [
     {
-        img: PROJECTIMAG1,
+        img: PROJECTIMAG3,
         title: 'SDAX',
         link: '/projects/sdax',
         type: 'frontend',
         desc: 'The SDAX Investor Portal is a secure site where investors can manage and track their digital asset investments, view performance, and access important documents—all designed for both individual and institutional investors.'
     },
     {
-        img: PROJECTIMAG2,
+        img: PROJECTIMAG3,
         title: 'Teen Up',
         type: 'frontend',
         link: '/projects/teen-up',
@@ -59,7 +59,7 @@ const PROJECTCARDDATA = [
         desc: 'A comprehensive learning management system designed for   students, teachers, and administrators, featuring project management, submission capabilities, reactions, and rewards for outstanding projects.'
     },
     {
-        img: PROJECTIMAG4,
+        img: PROJECTIMAG3,
         title: 'FlashMall',
         type: 'fullstack',
         link: '/projects/flashmall',
