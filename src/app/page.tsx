@@ -1,6 +1,6 @@
 'use client';
 // import 'locomotive-scroll/bundled/locomotive-scroll.css';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import React from 'react';
 import Navbar from '@/components/ui/Nav';
 // import CustomCursor from '@/components/share/CustomCursor';
@@ -15,19 +15,19 @@ import ContactInfo from '@/components/ui/ContactInfo';
 export default function Home() {
     console.log('hello');
     // const [isVisible, setIsVisible] = useState(true);
-    useEffect(() => {
-        (async () => {
-            const LocomotiveScroll = (await import('locomotive-scroll'))
-                .default;
+    // useEffect(() => {
+    //     (async () => {
+    //         const LocomotiveScroll = (await import('locomotive-scroll'))
+    //             .default;
 
-            new LocomotiveScroll({
-                lenisOptions: {
-                    duration: 1,
-                    easing: (t) => 1 - Math.pow(1 - t, 5)
-                }
-            });
-        })();
-    }, []);
+    //         new LocomotiveScroll({
+    //             lenisOptions: {
+    //                 duration: 1,
+    //                 easing: (t) => 1 - Math.pow(1 - t, 5)
+    //             }
+    //         });
+    //     })();
+    // }, []);
     // const [isHovered, setIsHovered] = useState(false); // Track if cursor is hovering over a project card
     // console.log(isHovered);
     return (
