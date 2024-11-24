@@ -1,6 +1,6 @@
 'use client';
 // import 'locomotive-scroll/bundled/locomotive-scroll.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import React from 'react';
 import Navbar from '@/components/ui/Nav';
 // import CustomCursor from '@/components/share/CustomCursor';
@@ -28,8 +28,8 @@ export default function Home() {
             });
         })();
     }, []);
-    const [isHovered, setIsHovered] = useState(false); // Track if cursor is hovering over a project card
-    console.log(isHovered);
+    // const [isHovered, setIsHovered] = useState(false); // Track if cursor is hovering over a project card
+    // console.log(isHovered);
     return (
         <div
         // onMouseEnter={() => setIsVisible(true)}
@@ -46,7 +46,9 @@ export default function Home() {
                 <HeroSection />
                 <AboutMeSection />
                 <ExpertiseSection />
-                <ProjectCardSection setIsHovered={setIsHovered} />
+                <ProjectCardSection
+                // setIsHovered={setIsHovered}
+                />
                 <CareerSection />
                 <EducationSection />
             </div>
