@@ -47,10 +47,7 @@ const ProjectCardComponent = ({
                 <Image
                     alt="projectImage"
                     src={data?.img}
-                    quality={50} // Optimize image quality
-                    placeholder="blur"
-                    priority
-                    fill
+                    fill={true}
                     className="object-cover  object-center transition-transform duration-700 ease-in-out"
                 />
 
