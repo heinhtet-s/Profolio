@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-import { motion, type MotionProps } from 'framer-motion';
+import { AnimationScope, motion, type MotionProps } from 'framer-motion';
 import React, { Ref } from 'react';
 
 export function cn(...inputs: ClassValue[]) {
@@ -22,7 +22,10 @@ type MotionButtonProps = MotionProps &
     React.ButtonHTMLAttributes<HTMLButtonElement>;
 type MotionNavProps = MotionProps &
     React.HTMLAttributes<HTMLElement> & { ref?: Ref<HTMLElement> };
-type MotionUlProps = MotionProps & React.HTMLAttributes<HTMLUListElement>;
+type MotionUlProps = MotionProps &
+    React.HTMLAttributes<HTMLUListElement> & {
+        ref?: AnimationScope<any>;
+    };
 
 // Export typed motion components
 export const MotionDiv = motion.div as React.FC<MotionDivProps>;

@@ -1,18 +1,12 @@
-import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import { FaAward, FaCode } from 'react-icons/fa';
 import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
 
 const AboutMeSection = () => {
-    const { ref } = useInView({
-        threshold: 0.5,
-        triggerOnce: true
-    });
-
     return (
         <section
-            ref={ref}
-            className="py-[50px]">
+            className="pt-[100px]"
+            id="about">
             <MotionH2
                 className="text-center text-lg"
                 initial={{ opacity: 0, y: 100 }} // Starts lower
@@ -22,16 +16,16 @@ const AboutMeSection = () => {
                 Get To Know More
             </MotionH2>
             <MotionH1
-                className="text-center font-bold mb-10 leading-[75px] text-title text-secondary"
+                className="text-center font-bold mb-10 leading-[75px] text-subTitle sm:text-title  text-secondary"
                 initial={{ opacity: 0, y: 100 }} // Starts lower
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}>
                 About Me
             </MotionH1>
-            <div className="flex items-center gap-24 justify-between">
+            <div className="flex flex-wrap lg:flex-nowrap  items-center gap-24 justify-between">
                 <MotionDiv
-                    className="w-1/2 flex justify-start"
+                    className="w-full lg:w-1/2 flex justify-start"
                     initial={{ opacity: 0, y: 200 }} // Starts lower
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -45,7 +39,7 @@ const AboutMeSection = () => {
                     />
                 </MotionDiv>
                 <MotionDiv
-                    className="w-1/2"
+                    className="w-full lg:w-1/2"
                     initial={{ opacity: 0, y: 100 }} // Starts lower
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -67,9 +61,9 @@ const AboutMeSection = () => {
                         technologies, I'm passionate about continuous learning
                         and dedicated to delivering excellent results.
                     </p>
-                    <div className="flex items-center mt-6 gap-10">
+                    <div className="flex items-center flex-wrap lg:flex-nowrap mt-6 gap-10">
                         <MotionDiv
-                            className="w-1/2 border border-slate-500 rounded-3xl p-6 flex flex-col justify-center items-center"
+                            className=" w-full lg:w-1/2 border border-slate-500 rounded-3xl p-6 flex flex-col justify-center items-center"
                             initial={{ opacity: 0, y: 100 }} // Starts lower
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -83,7 +77,7 @@ const AboutMeSection = () => {
                             </p>
                         </MotionDiv>
                         <MotionDiv
-                            className="w-1/2 border border-slate-500 rounded-3xl p-6 flex flex-col justify-center items-center"
+                            className=" w-full lg:w-1/2 border border-slate-500 rounded-3xl p-6 flex flex-col justify-center items-center"
                             initial={{ opacity: 0, y: 100 }} // Starts lower
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}

@@ -6,6 +6,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
 import { FLASHMALL, PRUIDEA_LMS, SDAX, TEENUP } from '@/lib/constant';
 import { useParams } from 'next/navigation';
+import { MotionDiv, MotionH1, MotionSection } from '@/lib/utils';
 
 type Section = {
     description?: string;
@@ -25,6 +26,7 @@ type Project = {
     title: string;
     sections: Section[];
 };
+
 const page = () => {
     const { id } = useParams<{ id: string[] }>();
     switch (id[0]) {
@@ -41,108 +43,176 @@ const page = () => {
     }
 };
 
+const fadeInVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, ease: 'easeOut' }
+    }
+};
+
 const ProjectDetailComponent = ({ data }: { data: Project }) => {
     return (
-        <div className="container">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <Navbar />
-            <section className="py-[50px]">
-                {/* <div className="flex gap-4 text-2xl items-center ">
-                <FaArrowLeft fontSize="30px" />
-                <p> Back </p>
-            </div> */}
-
-                <h1 className="font-bold  leading-[75px]  text-title text-navTextColor">
+            <MotionSection className="pt-[100px]  pb-[50px] ">
+                <MotionH1
+                    className="font-bold text-3xl md:text-5xl leading-tight text-navTextColor text-center md:text-left"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    initial="hidden"
+                    variants={fadeInVariants}>
                     {data?.title}
-                </h1>
-                <div className="grid grid-cols-2 gap-24 my-20  place-items-center">
-                    <div>
-                        <h1 className="font-bold mb-10 leading-[75px] text-subTitle text-navTextColor">
+                </MotionH1>
+
+                {/* First section */}
+                <MotionDiv
+                    className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10 md:my-20"
+                    whileInView="visible"
+                    initial="hidden"
+                    viewport={{ once: true, amount: 0.4 }}
+                    variants={{
+                        visible: { transition: { staggerChildren: 0.3 } }
+                    }}>
+                    <MotionDiv
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        initial="hidden"
+                        variants={fadeInVariants}>
+                        <h1 className="font-bold text-2xl md:text-4xl mb-5 text-navTextColor">
                             About This Project
                         </h1>
-                        <p className="mt-3 text-lg leading-8 opacity-70 text-textColor font-normal">
+                        <p className="mt-3 text-base md:text-lg leading-7 text-textColor opacity-70 font-normal">
                             {data?.sections[0]?.description}
                         </p>
-
                         <a
                             target="_blank"
                             href={data?.sections[0]?.link}
-                            className={`px-5 w-fit  duration-700 flex items-center gap-2 mt-5 font-medium transition-all	 text-lg  cursor-pointer	 rounded-[50px] py-2  bg-secondary text-white hover:bg-secondaryHover `}>
-                            Go Live <FaArrowRight fontSize={'20px'} />
+                            className="px-4 py-2 mt-5 inline-flex items-center gap-2 text-white bg-secondary rounded-full hover:bg-secondaryHover transition duration-300 text-sm md:text-lg">
+                            Go Live <FaArrowRight fontSize={'16px'} />
                         </a>
-                    </div>
-                    <div>
+                    </MotionDiv>
+                    <MotionDiv
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        initial="hidden"
+                        variants={fadeInVariants}>
                         <Image
                             alt={data?.sections[0]?.image?.alt}
                             src={data?.sections[0]?.image?.src}
-                            layout="responsive" // Makes the image responsive
-                            width={100} // Represents 100% width
-                            height={140} // Adjust the height proportionally
-                            quality={75} // Optimize image quality
-                            loading="lazy" // Lazy loading for performance
+                            layout="responsive"
+                            width={100}
+                            height={140}
+                            quality={75}
+                            loading="lazy"
                             className="object-cover object-top rounded-lg"
                         />
-                    </div>
-                </div>
-                <div className="grid grid-cols-2 gap-24 my-40 place-items-center">
-                    <div>
+                    </MotionDiv>
+                </MotionDiv>
+
+                {/* Second section */}
+                <MotionDiv
+                    className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10 md:my-40 items-center"
+                    whileInView="visible"
+                    initial="hidden"
+                    viewport={{ once: true, amount: 0.4 }}
+                    variants={{
+                        visible: { transition: { staggerChildren: 0.3 } }
+                    }}>
+                    <MotionDiv
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        initial="hidden"
+                        variants={fadeInVariants}>
                         <Image
                             alt={data?.sections[1]?.image?.alt}
                             src={data?.sections[1]?.image?.src}
-                            layout="responsive" // Makes the image responsive
-                            width={100} // Represents 100% width
-                            height={140} // Adjust the height proportionally
-                            quality={75} // Optimize image quality
-                            loading="lazy" // Lazy loading for performance
+                            layout="responsive"
+                            width={100}
+                            height={140}
+                            quality={75}
+                            loading="lazy"
                             className="object-cover object-top rounded-lg"
                         />
-                    </div>
-                    <div>
-                        <h1 className="font-bold mt-10 mb-5 leading-[75px] text-subTitle text-navTextColor">
+                    </MotionDiv>
+                    <MotionDiv
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        initial="hidden"
+                        variants={fadeInVariants}>
+                        <h1 className="font-bold text-2xl md:text-4xl mb-5 text-navTextColor">
                             Technologies we use
                         </h1>
-                        <p className="mt-3 text-lg leading-8 opacity-70 text-textColor font-normal">
+                        <p className="mt-3 text-base md:text-lg leading-7 text-textColor opacity-70 font-normal">
                             {data?.sections[1]?.description}
                         </p>
-
-                        <div className="flex gap-4 mt-8 ">
+                        <div className="flex flex-wrap gap-4 mt-8">
                             {data?.sections[1]?.technologies?.map(
-                                (tech, key) => <div key={key}>{tech?.icon}</div>
+                                (tech, key) => (
+                                    <MotionDiv
+                                        key={key}
+                                        whileInView="visible"
+                                        viewport={{ once: true }}
+                                        initial="hidden"
+                                        variants={fadeInVariants}>
+                                        {tech?.icon}
+                                    </MotionDiv>
+                                )
                             )}
                         </div>
-                    </div>
-                </div>
-                <div className="grid grid-cols-2 gap-24 my-40 place-items-center">
-                    <div>
-                        <h1 className="font-bold mb-5 leading-[75px] text-subTitle text-navTextColor">
+                    </MotionDiv>
+                </MotionDiv>
+
+                {/* Third section */}
+                <MotionDiv
+                    className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10 md:my-40 items-center"
+                    whileInView="visible"
+                    initial="hidden"
+                    viewport={{ once: true, amount: 0.4 }}
+                    variants={{
+                        visible: { transition: { staggerChildren: 0.3 } }
+                    }}>
+                    <MotionDiv
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        initial="hidden"
+                        variants={fadeInVariants}>
+                        <h1 className="font-bold text-2xl md:text-4xl mb-5 text-navTextColor">
                             Key Responsibilities
                         </h1>
-                        <ul className="list-disc">
+                        <ul className="list-disc ml-5">
                             {data?.sections[2]?.responsibilities?.map(
                                 (el, key) => (
                                     <li
                                         key={key}
-                                        className="mt-3 text-lg opacity-70 text-textColor font-normal">
+                                        className="mt-3 text-base md:text-lg text-textColor opacity-70 font-normal">
                                         {el}
                                     </li>
                                 )
                             )}
                         </ul>
-                    </div>
-                    <div>
+                    </MotionDiv>
+                    <MotionDiv
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        initial="hidden"
+                        variants={fadeInVariants}>
                         <Image
                             alt="features showcase"
                             src={data?.sections[2]?.image?.src}
-                            layout="responsive" // Makes the image responsive
-                            width={100} // Represents 100% width
-                            height={140} // Adjust the height proportionally
-                            quality={75} // Optimize image quality
-                            loading="lazy" // Lazy loading for performance
+                            layout="responsive"
+                            width={100}
+                            height={140}
+                            quality={75}
+                            loading="lazy"
                             className="object-cover object-top rounded-lg"
                         />
-                    </div>
-                </div>
-            </section>
+                    </MotionDiv>
+                </MotionDiv>
+            </MotionSection>
         </div>
     );
 };
+
 export default page;

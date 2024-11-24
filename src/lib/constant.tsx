@@ -33,28 +33,28 @@ type ProjectProps = {
 };
 const PROJECTCARDDATA = [
     {
-        img: '/image/project8.png',
+        img: '/image/project8.webp',
         title: 'SDAX',
         link: '/projects/sdax',
         type: 'frontend',
         desc: 'The SDAX Investor Portal is a secure site where investors can manage and track their digital asset investments, view performance, and access important documents—all designed for both individual and institutional investors.'
     },
     {
-        img: '/image/project_image5.png',
+        img: '/image/project_image5.webp',
         title: 'Teen Up',
         type: 'frontend',
         link: '/projects/teen-up',
         desc: 'TeeUp is a social platform for teens to connect with friends, join groups, and access resources that support learning and personal growth in a safe, engaging community.'
     },
     {
-        img: '/image/project2.png',
+        img: '/image/project2.webp',
         title: 'PRUIdeas',
         type: 'fullstack',
         link: '/projects/pruidea',
         desc: 'A comprehensive learning management system designed for   students, teachers, and administrators, featuring project management, submission capabilities, reactions, and rewards for outstanding projects.'
     },
     {
-        img: '/image/project6.jpg',
+        img: '/image/project6.webp',
         title: 'FlashMall',
         type: 'fullstack',
         link: '/projects/flashmall',
@@ -164,7 +164,7 @@ const PRUIDEA_LMS: ProjectProps = {
                 'PreIdea is a comprehensive learning management system (LMS) designed for students, teachers, and administrators. The platform creates an interactive and dynamic learning environment, featuring a robust course management system with tools for creating and managing quizzes, assignments, and projects. Students can submit their assignments, take quizzes, receive feedback, and engage with peers’ work, fostering collaboration and motivation. Teachers and administrators can manage courses, track student progress, and assess performance efficiently using built-in tools. The system also includes a rewards feature for exceptional submissions, enhancing student engagement. Powered by Prudential, PreIdea ensures a seamless educational process while providing a scalable and secure platform for all users.',
             link: '#',
             image: {
-                src: '/image/project_detail_image_7.png',
+                src: '/image/project_detail_image_7.webp',
                 alt: 'project showcase'
             }
         },
@@ -180,7 +180,7 @@ const PRUIDEA_LMS: ProjectProps = {
                 { icon: <SiMysql fontSize={'40px'} /> }
             ],
             image: {
-                src: '/image/project_detail_image_6.png',
+                src: '/image/project_detail_image_6.webp',
                 alt: 'features showcase'
             }
         },
@@ -196,7 +196,7 @@ const PRUIDEA_LMS: ProjectProps = {
                 'Improved scalability and maintainability by adhering to best coding practices and implementing a modular architecture.'
             ],
             image: {
-                src: '/image/project_detail_image_8.png',
+                src: '/image/project_detail_image_8.webp',
                 alt: 'features showcase'
             }
         }
@@ -209,7 +209,7 @@ const TEENUP: ProjectProps = {
             description:
                 "TeenUp is a dynamic social platform designed for teens to connect, grow, and explore new opportunities in a safe and engaging environment. It empowers users to build meaningful relationships with friends, join groups of common interest, and access various resources aimed at fostering personal growth and learning. TeenUp also offers a Job Application feature, enabling teens to explore career opportunities, apply for jobs, and gain valuable work experience—all while fostering a community of support and engagement. Whether you're looking to learn, connect, or kick-start your career journey, TeenUp is your go-to platform for a vibrant and productive teen experience.",
             image: {
-                src: '/image/project_detail_image_4.png',
+                src: '/image/project_detail_image_4.webp',
                 alt: 'project showcase'
             },
             link: 'https://teeup.viabells.com/'
@@ -225,7 +225,7 @@ const TEENUP: ProjectProps = {
                 { icon: <SiSocketdotio fontSize={'40px'} /> }
             ],
             image: {
-                src: '/image/project_detail_image_5.png',
+                src: '/image/project_detail_image_5.webp',
                 alt: 'features showcase'
             }
         },
@@ -237,7 +237,7 @@ const TEENUP: ProjectProps = {
                 'Ensured full responsiveness of the dashboard across all devices using Tailwind CSS and Radix UI for customizable and accessible components.'
             ],
             image: {
-                src: '/image/project_detail_image_3.png',
+                src: '/image/project_detail_image_3.webp',
                 alt: 'features showcase'
             }
         }
@@ -251,7 +251,7 @@ const SDAX: ProjectProps = {
                 'The SDAX Crypto Exchange is a secure and scalable platform for trading digital assets. It aims to provide a smooth and easy trading experience with strong security features, real-time updates, and a user-friendly interface. The platform includes key features such as user registration, wallet integration, trading charts, and asset management, all built with the latest technologies.',
             link: 'https://investor.sdax.co/register',
             image: {
-                src: '/image/project_detail_image_2.png',
+                src: '/image/project_detail_image_2.webp',
                 alt: 'project showcase'
             }
         },
@@ -282,7 +282,7 @@ const SDAX: ProjectProps = {
                 }
             ],
             image: {
-                src: '/image/project_detail_image.png',
+                src: '/image/project_detail_image.webp',
                 alt: 'features showcase'
             }
         },
@@ -292,20 +292,21 @@ const SDAX: ProjectProps = {
                 'Developed and integrated a custom UI React library to create reusable, shareable components, ensuring consistent design and efficient development across multiple projects.',
                 'Developed reusable and scalable UI components for efficient front-end development and consistency.',
                 'Implemented real-time notifications and live updates using WebSockets to enhance user engagement and interactivity.',
-                'Implemented third-party KYC validation using Onfido’s SDK and API to streamline identity verification and ensure compliance with regulatory requirements.'
+                'Implemented third-party KYC validation using Onfido’s SDK and API, as well as Singpass integration, to streamline identity verification and ensure compliance with regulatory requirements'
             ],
             image: {
-                src: '/image/project_detail_image_1.png',
+                src: '/image/project_detail_image_12.webp',
                 alt: 'features showcase'
             }
         }
     ]
 };
-
+const NAVITEM = ['About', 'Experience', 'Projects', 'Contact'];
 export {
     PROJECTCARDDATA,
     CAREERINFO,
     EDUINFO,
+    NAVITEM,
     FLASHMALL,
     PRUIDEA_LMS,
     TEENUP,

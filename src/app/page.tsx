@@ -39,6 +39,7 @@ export default function Home() {
                 isVisible={isVisible}
                 setIsVisible={setIsVisible}
             />
+
             <div className="container">
                 <Navbar />
                 <HeroSection />

@@ -5,22 +5,57 @@
 * {
     font-family: 'Work Sans', sans-serif;
 }
-
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
 body {
     margin: 0px;
+    scroll-behavior: smooth;
 
     /* cursor: wait; Add after Preloader*/
 }
 
 @layer components {
+    .primaryBtn {
+        @apply bg-secondary text-white hover:bg-secondaryHover px-5  duration-700 font-medium transition-all	 text-lg  cursor-pointer	 rounded-[50px] py-2;
+    }
     .container {
-        padding-left: 80px;
-        padding-right: 80px;
-        max-width: 1510px;
+        padding-left: 16px; /* Default padding for small screens */
+        padding-right: 16px;
+        max-width: 100%; /* Full width by default */
         margin-left: auto;
         margin-right: auto;
+
+        @screen sm {
+            padding-left: 24px; /* Slightly more padding on small screens */
+            padding-right: 24px;
+            width: 100%;
+            max-width: 100%; /* Full width by default */
+        }
+
+        @screen md {
+            padding-left: 40px; /* Adjust padding for medium screens */
+            padding-right: 40px;
+            width: 100%;
+            max-width: 100%; /* Full width by default */
+        }
+
+        @screen lg {
+            padding-left: 80px; /* Larger padding for large screens */
+            padding-right: 80px;
+            max-width: 1200px; /* Constrain width for large screens */
+        }
+
+        @screen xl {
+            max-width: 1510px; /* Apply the max-width for extra-large screens */
+        }
     }
 }
+.spinner {
+    @apply border-2 border-t-2 border-t-white border-secondary rounded-full;
+}
+
 .custom-cursor {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }

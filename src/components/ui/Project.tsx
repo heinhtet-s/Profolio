@@ -27,7 +27,7 @@ const ProjectCardComponent = ({
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className=" cursor-pointer group"
+            className="cursor-pointer group"
             onClick={() => {
                 router.push(data?.link);
             }}
@@ -37,7 +37,7 @@ const ProjectCardComponent = ({
             onMouseLeave={() => {
                 setIsHovered(false);
             }}>
-            <div className="w-full relative h-[550px] transition-transform duration-700 ease-in-out overflow-hidden group-hover:scale-95">
+            <div className="w-full relative h-[300px] sm:h-[400px] md:h-[550px] transition-transform duration-700 ease-in-out overflow-hidden group-hover:scale-95">
                 <Image
                     alt="projectImage"
                     src={data?.img}
@@ -49,14 +49,14 @@ const ProjectCardComponent = ({
             </div>
             <div className="pt-5 mb-5 transition-all duration-700 ease-in-out group-hover:-translate-y-4 group-hover:px-4">
                 <div className="flex justify-between items-center">
-                    <h2 className="text-[30px] text-textColor font-bold leading-[50px]">
+                    <h2 className="text-[20px] sm:text-[24px] md:text-[30px] text-textColor font-bold leading-[30px] sm:leading-[40px] md:leading-[50px]">
                         {data?.title}
                     </h2>
-                    <button className="border border-secondary text-secondary rounded-3xl px-2">
+                    <button className="border border-secondary text-secondary rounded-3xl px-2 text-sm sm:text-base">
                         {data?.type}
                     </button>
                 </div>
-                <p className="mt-3 text-base leading-8 font-normal  opacity-70  text-textColor ">
+                <p className="mt-3 text-sm sm:text-base leading-6 sm:leading-8 font-normal opacity-70 text-textColor">
                     {data?.desc}
                 </p>
             </div>
@@ -70,13 +70,15 @@ const ProjectCardSection = ({
     setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
     return (
-        <div className="py-[50px] mb-10">
+        <div
+            id="projects"
+            className="pt-[100px]  mb-10">
             <h3 className="text-center text-lg">Browse My Featured</h3>
-            <h1 className="text-center font-bold mb-16 leading-[75px] text-title text-secondary">
+            <h1 className="text-center font-bold mb-10 leading-[45px] sm:leading-[75px] text-subTitle sm:text-title  text-secondary">
                 Projects
             </h1>
 
-            <div className="grid grid-cols-2 gap-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2  gap-10 sm:gap-16 lg:gap-24">
                 {PROJECTCARDDATA?.map((el, key) => (
                     <ProjectCardComponent
                         setIsHovered={setIsHovered}
