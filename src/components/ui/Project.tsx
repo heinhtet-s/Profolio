@@ -30,8 +30,9 @@ const ProjectCardComponent = ({
     const router = useRouter();
     return (
         <MotionDiv
-            initial={{ opacity: 0, scale: 0.8 }} // Starts lower
-            whileInView={{ opacity: 1, scale: 1 }}
+            // initial={{ opacity: 0, scale: 0.8 }} // Starts lower
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="cursor-pointer group"
