@@ -5,7 +5,19 @@ import { Toaster } from 'react-hot-toast';
 
 const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
+    useEffect(() => {
+        (async () => {
+            const LocomotiveScroll = (await import('locomotive-scroll'))
+                .default;
 
+            new LocomotiveScroll({
+                lenisOptions: {
+                    duration: 1,
+                    easing: (t) => 1 - Math.pow(1 - t, 5)
+                }
+            });
+        })();
+    }, []);
     useEffect(() => {
         const scrollToTop = () => {
             console.log('dd');
