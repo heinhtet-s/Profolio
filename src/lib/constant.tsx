@@ -79,7 +79,7 @@ const CAREERINFO = [
     },
     {
         title: 'Frontend Developer at Dynasty',
-        duration: 'January 2022 - October 2022',
+        duration: 'November 2021 - June 2022',
         dec: 'I created and maintained multiple static websites using HTML5, CSS3, JavaScript, and React. I designed and implemented custom client dashboards with Material UI components and consistently applied strong problem-solving skills in day-to-day code maintenance, debugging, and client support.'
     },
     {
