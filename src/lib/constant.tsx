@@ -69,12 +69,12 @@ const PROJECTCARDDATA = [
 const CAREERINFO = [
     {
         title: ' Fullstack Developer at Viabells',
-        duration: 'Aug 2023 - Present',
+        duration: 'August 2023 - Present',
         dec: ' As a Fullstack Developer, I work closely with the team to ensure that both the front-end and back-end are well integrated and align with the product’s goals. I focus on building reliable and efficient systems, helping the startup succeed by providing practical, user-focused solutions.'
     },
     {
         title: 'Web Developer at Light Idea',
-        duration: 'July 2022 - Augest 2023',
+        duration: 'July 2022 - August 2023',
         dec: 'I played a key role in enhancing the Flash Mall EPOS system by leading the integration of new features using Firebase and React.js. Additionally, I built a complete delivery app dashboard from the ground up with Vue.js, covering restaurant, order, driver, and promotion management. I also developed a powerful EPOS system for a bar and restaurant, ensuring smooth operations and high customer satisfaction.'
     },
     {
