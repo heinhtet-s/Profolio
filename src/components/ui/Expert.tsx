@@ -1,179 +1,164 @@
-import { MotionDiv, MotionLi } from '@/lib/utils';
-import { IoCheckmarkDoneCircle } from 'react-icons/io5';
+'use client';
+import React from 'react';
+import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
+import {
+    SiReact,
+    SiNextdotjs,
+    SiTypescript,
+    SiJavascript,
+    SiTailwindcss,
+    SiNodedotjs,
+    SiExpress,
+    SiNestjs,
+    SiMongodb,
+    SiPostgresql,
+    SiDocker,
+    SiKubernetes,
+    SiFirebase,
+    SiHtml5,
+    SiRedux
+} from 'react-icons/si';
 
-const ExpertLisingComponent = ({
-    level,
-    title
-}: {
-    level: string;
+type Skill = {
     title: string;
-}) => {
+    level: string;
+    icon: React.ReactNode;
+};
+
+const FRONTEND_SKILLS: Skill[] = [
+    { title: 'Next.js', level: 'Expert', icon: <SiNextdotjs /> },
+    { title: 'React', level: 'Expert', icon: <SiReact /> },
+    { title: 'TypeScript', level: 'Proficient', icon: <SiTypescript /> },
+    { title: 'JavaScript (ES6+)', level: 'Expert', icon: <SiJavascript /> },
+    { title: 'Redux / Zustand', level: 'Proficient', icon: <SiRedux /> },
+    { title: 'Tailwind CSS', level: 'Expert', icon: <SiTailwindcss /> },
+    { title: 'React Native', level: 'Intermediate', icon: <SiReact /> },
+    { title: 'HTML5 & Modern CSS', level: 'Expert', icon: <SiHtml5 /> }
+];
+
+const BACKEND_SKILLS: Skill[] = [
+    { title: 'NestJS', level: 'Proficient', icon: <SiNestjs /> },
+    { title: 'Node.js', level: 'Proficient', icon: <SiNodedotjs /> },
+    { title: 'Express.js', level: 'Proficient', icon: <SiExpress /> },
+    { title: 'MongoDB', level: 'Proficient', icon: <SiMongodb /> },
+    {
+        title: 'PostgreSQL & MySQL',
+        level: 'Intermediate',
+        icon: <SiPostgresql />
+    },
+    { title: 'Docker', level: 'Intermediate', icon: <SiDocker /> },
+    { title: 'Kubernetes', level: 'Familiar', icon: <SiKubernetes /> },
+    { title: 'Firebase / Firestore', level: 'Proficient', icon: <SiFirebase /> }
+];
+
+const SkillItem = ({ skill }: { skill: Skill }) => {
     return (
-        <MotionLi
-            className="flex gap-3 sm:gap-8 text-lg  "
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}>
-            <div className="mt-1">
-                <IoCheckmarkDoneCircle
-                    color="#333333"
-                    fontSize="24px"
-                />
+        <div className="flex items-center justify-between p-3.5 rounded-xl bg-surface/60 border border-borderGlass hover:border-champagne/40 hover:bg-surfaceLight/80 transition-all duration-300 group">
+            <div className="flex items-center gap-3">
+                <div className="text-xl text-textMuted group-hover:text-champagne transition-colors">
+                    {skill.icon}
+                </div>
+                <span className="text-sm font-medium text-white group-hover:text-champagneLight transition-colors">
+                    {skill.title}
+                </span>
             </div>
-            <div>
-                <p className="font-semibold leading-0">{title}</p>
-                <p className="opacity-70 text-base">{level}</p>
-            </div>
-        </MotionLi>
+            <span className="text-[11px] font-mono uppercase tracking-wider text-champagne/80 bg-champagne/10 px-2.5 py-0.5 rounded-full border border-champagne/20">
+                {skill.level}
+            </span>
+        </div>
     );
 };
 
 const ExpertiseSection = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.3 // Delay between child animations
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-    };
-
     return (
-        <section className="pt-[100px] md:py-[50px] mb-10">
-            <h3 className="text-center text-lg">Explore My</h3>
-            <h1 className="text-center font-bold mb-10 leading-[45px] sm:leading-[75px] text-title text-secondary text-2xl sm:text-4xl">
-                Expertise Areas
-            </h1>
-            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-24 justify-between">
-                {/* Frontend Development */}
-                <MotionDiv
-                    className="w-full lg:w-1/2 border border-slate-500 rounded-3xl py-6 px-8 sm:px-12 lg:px-20"
-                    initial="hidden"
-                    whileInView="visible"
+        <section
+            className="pt-20 md:pt-32 pb-16 md:pb-24 border-t border-borderGlass"
+            id="expertise">
+            {/* Eyebrow & Title */}
+            <div className="mb-14">
+                <MotionH2
+                    className="text-xs font-mono tracking-widest uppercase text-champagne mb-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    variants={containerVariants}>
-                    <h2 className="text-xl sm:text-2xl mb-6 opacity-70 text-textColor text-center font-bold leading-[30px] sm:leading-[50px]">
-                        Frontend Development
-                    </h2>
-                    <div className="grid grid-cols-2 gap-5">
-                        <ul className="flex flex-col gap-5">
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="HTML"
-                                    level="Expert"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="JavaScript"
-                                    level="Expert"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="React"
-                                    level="Expert"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="Vue.js"
-                                    level="Intermediate"
-                                />
-                            </MotionDiv>
-                        </ul>
-                        <ul className="flex flex-col gap-5">
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="CSS"
-                                    level="Expert"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="TypeScript"
-                                    level="Proficient"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="Next.js"
-                                    level="Expert"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="React Native"
-                                    level="Intermediate"
-                                />
-                            </MotionDiv>
-                        </ul>
+                    transition={{ duration: 0.5 }}>
+                    02 / Technical Stack & Proficiency
+                </MotionH2>
+                <MotionH1
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.1 }}>
+                    Architectural & Engineering{' '}
+                    <span className="editorial-serif font-normal italic champagne-gradient-text">
+                        Capabilities
+                    </span>
+                </MotionH1>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+                {/* Frontend Architecture Card */}
+                <MotionDiv
+                    className="glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass hover:border-champagne/30 transition-all duration-500 shadow-2xl relative overflow-hidden"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}>
+                    <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
+                        <div>
+                            <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                                Frontend Architecture & UI
+                            </h3>
+                            <p className="text-xs text-textMuted mt-1 font-mono">
+                                High performance, responsiveness, &
+                                accessibility
+                            </p>
+                        </div>
+                        <span className="text-xs font-mono text-champagne/80 bg-surface px-3 py-1 rounded-full border border-borderGlass">
+                            Client-Side
+                        </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {FRONTEND_SKILLS.map((skill, idx) => (
+                            <SkillItem
+                                key={idx}
+                                skill={skill}
+                            />
+                        ))}
                     </div>
                 </MotionDiv>
 
-                {/* Backend Development */}
+                {/* Backend & Cloud Systems Card */}
                 <MotionDiv
-                    className="w-full lg:w-1/2 border border-slate-500 rounded-3xl py-6 px-8 sm:px-12 lg:px-20"
-                    initial="hidden"
-                    whileInView="visible"
+                    className="glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass hover:border-champagne/30 transition-all duration-500 shadow-2xl relative overflow-hidden"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    variants={containerVariants}>
-                    <h2 className="text-xl sm:text-2xl mb-6 opacity-70 text-textColor text-center font-bold leading-[30px] sm:leading-[50px]">
-                        Backend Development
-                    </h2>
-                    <div className="grid grid-cols-2 gap-5">
-                        <ul className="flex flex-col gap-5">
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="Node JS"
-                                    level="Proficient"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="MongoDB"
-                                    level="Intermediate"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="Nest JS"
-                                    level="Intermediate"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="Kubernetes"
-                                    level="Beginner"
-                                />
-                            </MotionDiv>
-                        </ul>
-                        <ul className="flex flex-col gap-5">
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="Express JS"
-                                    level="Intermediate"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="PostgreSQL"
-                                    level="Intermediate"
-                                />
-                            </MotionDiv>
-                            <MotionDiv variants={itemVariants}>
-                                <ExpertLisingComponent
-                                    title="Docker"
-                                    level="Intermediate"
-                                />
-                            </MotionDiv>
-                        </ul>
+                    transition={{ duration: 0.7, delay: 0.15 }}>
+                    <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
+                        <div>
+                            <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                                Backend & Distributed Systems
+                            </h3>
+                            <p className="text-xs text-textMuted mt-1 font-mono">
+                                Microservices, database models, & cloud
+                                pipelines
+                            </p>
+                        </div>
+                        <span className="text-xs font-mono text-champagne/80 bg-surface px-3 py-1 rounded-full border border-borderGlass">
+                            Server-Side
+                        </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {BACKEND_SKILLS.map((skill, idx) => (
+                            <SkillItem
+                                key={idx}
+                                skill={skill}
+                            />
+                        ))}
                     </div>
                 </MotionDiv>
             </div>

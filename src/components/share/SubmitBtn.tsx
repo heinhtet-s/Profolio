@@ -9,14 +9,18 @@ type BtnProps = {
 const SubmitBtn: React.FC<BtnProps> = ({ text, isLoading }) => {
     return (
         <button
-            className={`bg-secondaryHover mt-3 text-white min-h-[44px] hover:bg-secondaryHover px-5 duration-700 font-medium transition-all text-lg cursor-pointer rounded-[50px] py-2 flex items-center justify-center ${
-                isLoading ? 'opacity-70 min-w-[140px] cursor-not-allowed' : ''
+            type="submit"
+            className={`w-full sm:w-auto bg-champagne text-bgDark hover:bg-champagneLight hover:shadow-[0_0_30px_rgba(226,206,172,0.35)] min-h-[46px] px-8 py-3 rounded-full font-semibold text-sm tracking-wide duration-300 transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                isLoading ? 'opacity-70 cursor-not-allowed' : ''
             }`}
             disabled={isLoading}>
             {isLoading ? (
-                <div className="spinner border-2 border-t-2 border-t-white border-secondary rounded-full w-5 h-5 animate-spin mr-2"></div>
+                <>
+                    <div className="border-2 border-t-2 border-t-bgDark border-champagne rounded-full w-4 h-4 animate-spin mr-2"></div>
+                    <span>Sending Dispatch...</span>
+                </>
             ) : (
-                text
+                <span>{text}</span>
             )}
         </button>
     );

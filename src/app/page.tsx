@@ -1,5 +1,4 @@
 'use client';
-// import 'locomotive-scroll/bundled/locomotive-scroll.css';
 import { useState } from 'react';
 import React from 'react';
 import Navbar from '@/components/ui/Nav';
@@ -13,13 +12,12 @@ import EducationSection from '@/components/ui/Education';
 import ContactInfo from '@/components/ui/ContactInfo';
 
 export default function Home() {
-    console.log('hello');
     const [isVisible, setIsVisible] = useState(true);
+    const [isHovered, setIsHovered] = useState(false);
 
-    const [isHovered, setIsHovered] = useState(false); // Track if cursor is hovering over a project card
-    console.log(isHovered);
     return (
         <div
+            className="min-h-screen bg-bgDark text-textColor selection:bg-champagne selection:text-bgDark overflow-x-hidden"
             onMouseEnter={() => setIsVisible(true)}
             onMouseLeave={() => setIsVisible(false)}>
             <CustomCursor
@@ -28,15 +26,17 @@ export default function Home() {
                 setIsVisible={setIsVisible}
             />
 
-            <div className="container">
-                <Navbar />
+            <Navbar />
+
+            <main className="container">
                 <HeroSection />
                 <AboutMeSection />
                 <ExpertiseSection />
                 <ProjectCardSection setIsHovered={setIsHovered} />
                 <CareerSection />
                 <EducationSection />
-            </div>
+            </main>
+
             <ContactInfo />
         </div>
     );

@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 import { PROJECTCARDDATA } from '@/lib/constant';
-import { MotionDiv } from '@/lib/utils';
+import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
 import Image, { StaticImageData } from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { HiOutlineArrowUpRight } from 'react-icons/hi2';
 
 type ProjectCardComponentProps = {
     img: StaticImageData;
@@ -16,10 +16,12 @@ type ProjectCardComponentProps = {
 
 const ProjectCardComponent = ({
     data,
-    setIsHovered
+    setIsHovered,
+    index
 }: {
     data: ProjectCardComponentProps;
     setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
+    index: number;
 }) => {
     const handleMouseEnter = React.useCallback(() => {
         setIsHovered(true);
@@ -28,48 +30,70 @@ const ProjectCardComponent = ({
     const handleMouseLeave = React.useCallback(() => {
         setIsHovered(false);
     }, [setIsHovered]);
+
     const router = useRouter();
+
     return (
         <MotionDiv
-            initial={{ opacity: 0, scale: 0.8 }} // Starts lower
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="cursor-pointer group"
+            transition={{ duration: 0.7, delay: index * 0.1 }}
+            className="group cursor-pointer flex flex-col h-full rounded-2xl glass-card overflow-hidden hover:border-champagne/40 transition-all duration-500 hover:-translate-y-1.5"
             onClick={() => {
                 router.push(data?.link);
             }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}>
-            <div className="w-full   h-[300px] sm:h-[400px] md:h-[550px]  relative transition-transform duration-700 ease-in-out overflow-hidden group-hover:scale-95">
+            {/* Visual Container */}
+            <div className="w-full h-64 sm:h-72 md:h-80 relative overflow-hidden bg-surface">
                 <Image
-                    alt="projectImage"
+                    alt={data?.title}
                     src={data?.img}
-                    quality={70} // Optimize image quality
+                    quality={85}
                     placeholder="blur"
-                    priority
+                    priority={index < 2}
                     fill
-                    className="object-cover  object-center transition-transform duration-700 ease-in-out"
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95 group-hover:brightness-100"
                 />
 
-                {/* <img
-                    alt="projectImage"
-                    src={data?.img}
-                    className="object-cover  h-[300px] sm:h-[400px] md:h-[550px]   object-center transition-transform duration-700 ease-in-out"
-                /> */}
-            </div>
-            <div className="pt-5 mb-5 transition-all duration-700 ease-in-out group-hover:-translate-y-4 group-hover:px-4">
-                <div className="flex justify-between items-center">
-                    <h2 className="text-[20px] sm:text-[24px] md:text-[30px] text-textColor font-bold leading-[30px] sm:leading-[40px] md:leading-[50px]">
-                        {data?.title}
-                    </h2>
-                    <button className="border border-secondary text-secondary rounded-3xl px-2 text-sm sm:text-base">
-                        {data?.type}
-                    </button>
+                {/* Subtle Gradient Veil */}
+                <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80" />
+
+                {/* Floating Category Pill */}
+                <div className="absolute top-4 left-4 z-10">
+                    <span className="text-[11px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-bgDark/80 border border-borderGlass text-champagne backdrop-blur-md">
+                        {data?.type === 'fullstack'
+                            ? 'Full-Stack Architecture'
+                            : 'Frontend Engineering'}
+                    </span>
                 </div>
-                <p className="mt-3 text-sm sm:text-base leading-6 sm:leading-8 font-normal opacity-70 text-textColor">
-                    {data?.desc}
-                </p>
+
+                {/* Arrow Action Icon in top right */}
+                <div className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-bgDark/80 border border-borderGlass flex items-center justify-center text-white group-hover:text-champagne group-hover:border-champagne/50 transition-all duration-300">
+                    <HiOutlineArrowUpRight className="text-base group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                </div>
+            </div>
+
+            {/* Card Content */}
+            <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div>
+                    <h3 className="text-xl sm:text-2xl text-white font-bold tracking-tight group-hover:text-champagne transition-colors duration-300 flex items-center justify-between">
+                        {data?.title}
+                    </h3>
+                    <p className="mt-3 text-sm text-textColor/80 leading-relaxed font-light line-clamp-3">
+                        {data?.desc}
+                    </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                    <span className="text-xs font-mono uppercase tracking-wider text-champagne group-hover:underline decoration-champagne/40 underline-offset-4 flex items-center gap-1">
+                        Inspect Architecture & Case
+                    </span>
+                    <span className="text-xs text-textMuted font-mono">
+                        Case 0{index + 1}
+                    </span>
+                </div>
             </div>
         </MotionDiv>
     );
@@ -81,25 +105,44 @@ const ProjectCardSection = ({
     setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
     return (
-        <div
+        <section
             id="projects"
-            className="pt-[100px] md:py-[50px] mb-10">
-            <h3 className="text-center text-lg">Browse My Featured</h3>
-            <h1 className="text-center font-bold mb-10 leading-[45px] sm:leading-[75px] text-subTitle sm:text-title  text-secondary">
-                Projects
-            </h1>
+            className="pt-20 md:pt-32 pb-16 md:pb-24 border-t border-borderGlass">
+            {/* Eyebrow & Title */}
+            <div className="mb-14">
+                <MotionH2
+                    className="text-xs font-mono tracking-widest uppercase text-champagne mb-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}>
+                    03 / Selected Case Studies
+                </MotionH2>
+                <MotionH1
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.1 }}>
+                    Production Deployments &{' '}
+                    <span className="editorial-serif font-normal italic champagne-gradient-text">
+                        Engineered Systems
+                    </span>
+                </MotionH1>
+            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2  gap-10 sm:gap-16 lg:gap-24">
+            {/* Project Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                 {PROJECTCARDDATA?.map((el, key) => (
-                    <div key={key}>
-                        <ProjectCardComponent
-                            setIsHovered={setIsHovered}
-                            data={el}
-                        />
-                    </div>
+                    <ProjectCardComponent
+                        key={key}
+                        index={key}
+                        setIsHovered={setIsHovered}
+                        data={el}
+                    />
                 ))}
             </div>
-        </div>
+        </section>
     );
 };
 

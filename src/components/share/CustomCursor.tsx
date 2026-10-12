@@ -30,43 +30,42 @@ const CustomCursor = ({
         window.addEventListener('mouseenter', handleMouseEnter);
         window.addEventListener('mouseleave', handleMouseLeave);
 
-        // Cleanup event listeners on unmount
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseenter', handleMouseEnter);
             window.removeEventListener('mouseleave', handleMouseLeave);
         };
-    }, []);
+    }, [setIsVisible]);
 
     return (
         <MotionDiv
-            className={`fixed flex opacity-0 text-lg justify-center items-center text-white top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[9999] backdrop-blur-md bg-[rgba(0,0,0,0.3)]`}
+            className="fixed flex opacity-0 text-xs tracking-widest uppercase font-semibold justify-center items-center text-champagne top-0 left-0 rounded-full pointer-events-none z-[9999] backdrop-blur-md bg-surface/90 border border-champagne/40 shadow-[0_0_25px_rgba(226,206,172,0.3)]"
             animate={{
                 display: isHovered ? 'flex' : 'none',
-                x: cursorPosition.x - 40,
-                y: cursorPosition.y - 80,
-                opacity: isVisible ? 1 : 0, // Hide the cursor when it's out of the viewport
-                width: !isHovered ? 15 : 100,
-                height: !isHovered ? 15 : 100
+                x: cursorPosition.x - 45,
+                y: cursorPosition.y - 45,
+                opacity: isVisible && isHovered ? 1 : 0,
+                width: !isHovered ? 16 : 90,
+                height: !isHovered ? 16 : 90
             }}
             transition={{
                 type: 'spring',
-                damping: 20,
-                stiffness: 150
+                damping: 22,
+                stiffness: 180
             }}>
             <MotionP
                 style={{
-                    flex: '0 0 100px'
+                    flex: '0 0 90px'
                 }}
-                className="text-base  text-center"
+                className="text-[11px] text-center font-medium text-champagneLight select-none"
                 initial={{ opacity: 0 }}
                 animate={{
-                    opacity: isHovered ? 1 : 0 // Make text visible when hovered
+                    opacity: isHovered ? 1 : 0
                 }}
                 transition={{
-                    duration: 0.2 // Smooth transition for the text
+                    duration: 0.2
                 }}>
-                See Project
+                View Case ↗
             </MotionP>
         </MotionDiv>
     );

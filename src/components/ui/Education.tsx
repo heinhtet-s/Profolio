@@ -1,6 +1,10 @@
+'use client';
 import { EDUINFO } from '@/lib/constant';
-import { cn, MotionDiv } from '@/lib/utils';
+import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
+import { HiOutlineAcademicCap } from 'react-icons/hi';
+
 type EduComponentProps = {
+    degree?: string;
     title: string;
     duration: string;
     uniName: string;
@@ -12,89 +16,101 @@ const EduComponent = ({
 }: {
     data: EduComponentProps;
     index: number;
-}) => (
-    <MotionDiv
-        key={index}
-        className={cn([
-            'grid cursor-pointer grid-cols-1 md:grid-cols-8 border-b pb-6 md:pb-10 border-slate-300 group relative',
-            index !== 0 ? 'mt-6 md:mt-10' : ''
-        ])}
-        initial={{ opacity: 0, y: 30 }} // Start below and invisible
-        whileInView={{ opacity: 1, y: 0 }} // Animate to final position
-        viewport={{ once: true }} // Trigger only once when it comes into view
-        transition={{
-            duration: 0.6,
-            type: 'easeInOut',
-            delay: index * 0.2 // Staggered delay for each item
-        }}
-        whileHover={{
-            paddingLeft: 8, // Adjust for smaller screens
-            paddingRight: 12 // Adjust for smaller screens
-        }}>
+}) => {
+    const isBachelor = data.degree?.toLowerCase().includes('bachelor');
+
+    return (
         <MotionDiv
-            className="col-span-1 md:col-span-3 mb-4 md:mb-0"
-            whileHover={{ x: 4 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-            <h3 className="text-sm md:text-base font-medium">{data?.title}</h3>
+            key={index}
+            className={`glass-card p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
+                isBachelor
+                    ? 'border-champagne/40 bg-surface/90 shadow-[0_0_30px_rgba(226,206,172,0.12)] hover:border-champagne'
+                    : 'border-borderGlass hover:border-champagne/40'
+            }`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+                duration: 0.5,
+                delay: index * 0.1
+            }}>
+            <div className="flex items-start justify-between gap-3 mb-5">
+                <div
+                    className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                        isBachelor
+                            ? 'bg-champagne/20 text-champagne border border-champagne/40 shadow-sm'
+                            : 'bg-champagne/10 text-champagne'
+                    }`}>
+                    <HiOutlineAcademicCap className="text-xl" />
+                </div>
+                <div className="flex flex-col items-end gap-1.5">
+                    {data?.degree && (
+                        <span
+                            className={`text-[10px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+                                isBachelor
+                                    ? 'bg-champagne/20 text-champagne border-champagne/40 font-semibold'
+                                    : 'bg-surface text-champagne/80 border-borderGlass'
+                            }`}>
+                            {data.degree}
+                        </span>
+                    )}
+                    <span className="text-[11px] font-mono text-textMuted bg-surface/80 px-2 py-0.5 rounded-full border border-borderGlass">
+                        {data?.duration}
+                    </span>
+                </div>
+            </div>
+
+            <div>
+                <h3 className="text-base sm:text-lg font-bold text-white mb-2 leading-snug">
+                    {data?.title}
+                </h3>
+                <p
+                    className={`text-xs sm:text-sm font-mono ${
+                        isBachelor
+                            ? 'text-champagne font-medium'
+                            : 'text-textMuted'
+                    }`}>
+                    {data?.uniName}
+                </p>
+            </div>
         </MotionDiv>
-        <div className="col-span-1 md:col-span-3 mb-4 md:mb-0">
-            <p className="text-sm md:text-base leading-6 md:leading-8 font-normal opacity-70 text-textColor">
-                {data?.uniName}
-            </p>
-        </div>
-        <MotionDiv
-            className="col-span-1 md:col-span-2"
-            whileHover={{ x: -4 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-            <p className="text-sm md:text-base leading-6 md:leading-8 font-normal opacity-70 text-textColor">
-                {data?.duration}
-            </p>
-        </MotionDiv>
-    </MotionDiv>
-);
+    );
+};
 
 const EducationSection = () => {
     return (
-        <section className="pt-[100px] md:py-[50px] mb-10 ">
-            <h3 className="text-center text-lg">Browse My </h3>
-            <h1 className="text-center font-bold mb-10 leading-[45px] sm:leading-[75px] text-subTitle sm:text-title  text-secondary">
-                Academic Achievements
-            </h1>
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
-                {/* Left Section */}
-                <div className="col-span-1 md:col-span-4">
-                    <p className="text-base leading-8 font-normal opacity-70 text-textColor text-center lg:text-left">
-                        My educational journey started with a deep interest in
-                        technology, which naturally led me to full-stack
-                        development. I’ve always been passionate about both
-                        front-end and back-end technologies, and I enjoy
-                        building end-to-end solutions that deliver seamless user
-                        experiences. I am a fast learner, and I constantly seek
-                        to expand my knowledge by exploring various areas of
-                        development, from databases to user interfaces.
-                    </p>
-                </div>
-                {/* Right Section */}
-                <div className="col-span-1 md:col-span-8">
-                    <MotionDiv
-                        className="grid grid-cols-1 gap-10"
-                        initial={{ opacity: 0 }} // Initial opacity
-                        whileInView={{ opacity: 1 }} // Fade in when in view
-                        viewport={{ once: true }} // Trigger only once
-                        transition={{
-                            duration: 1,
-                            ease: 'easeInOut',
-                            delay: 0.4 // Delay the whole list slightly
-                        }}>
-                        {EDUINFO.map((data, index) => (
-                            <EduComponent
-                                key={index}
-                                data={data}
-                                index={index}
-                            />
-                        ))}
-                    </MotionDiv>
-                </div>
+        <section className="pt-20 md:pt-32 pb-16 md:pb-24 border-t border-borderGlass">
+            {/* Eyebrow & Title */}
+            <div className="mb-14">
+                <MotionH2
+                    className="text-xs font-mono tracking-widest uppercase text-champagne mb-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}>
+                    05 / Academic Credentials
+                </MotionH2>
+                <MotionH1
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.1 }}>
+                    Education & Professional{' '}
+                    <span className="editorial-serif font-normal italic champagne-gradient-text">
+                        Accreditations
+                    </span>
+                </MotionH1>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {EDUINFO.map((data, index) => (
+                    <EduComponent
+                        key={index}
+                        data={data}
+                        index={index}
+                    />
+                ))}
             </div>
         </section>
     );

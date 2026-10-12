@@ -1,22 +1,27 @@
 'use client';
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { MotionDiv } from '@/lib/utils';
+import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
 import SubmitBtn from '../share/SubmitBtn';
 import toast from 'react-hot-toast';
+import {
+    HiOutlineMail,
+    HiOutlinePhone,
+    HiOutlineLocationMarker,
+    HiOutlineClipboardCopy
+} from 'react-icons/hi';
+import { FaCheck } from 'react-icons/fa';
 
-// Define form input types
 interface FormData {
     name: string;
     email: string;
     message: string;
 }
 
-// Define status type
-
 const ContactInfo: React.FC = () => {
-    const [isLoading, seIsLoading] = useState(false);
-    // React Hook Form setup with TypeScript
+    const [isLoading, setIsLoading] = useState(false);
+    const [isCopied, setIsCopied] = useState(false);
+
     const {
         register,
         handleSubmit,
@@ -24,9 +29,15 @@ const ContactInfo: React.FC = () => {
         reset
     } = useForm<FormData>();
 
-    // Form submission handler
+    const copyEmail = () => {
+        navigator.clipboard.writeText('heinh9540@gmail.com');
+        setIsCopied(true);
+        toast.success('Email copied to clipboard!');
+        setTimeout(() => setIsCopied(false), 2500);
+    };
+
     const onSubmit: SubmitHandler<FormData> = async (formData) => {
-        seIsLoading(false);
+        setIsLoading(true);
         try {
             const response = await fetch('/api/sendEmail', {
                 method: 'POST',
@@ -35,145 +46,280 @@ const ContactInfo: React.FC = () => {
             });
 
             await response.json();
-            toast.success('Successfully Sent ');
-            reset(); // Reset form after successful submission
+            toast.success('Your message has been dispatched successfully!');
+            reset();
         } catch (error) {
-            toast.error('Something wrong');
+            toast.error(
+                'Dispatch failed. Please email directly at heinh9540@gmail.com'
+            );
         } finally {
-            seIsLoading(false);
+            setIsLoading(false);
         }
     };
 
     return (
         <section
-            id={'contact'}
-            className="pt-[100px] container pb-[80px] bg-secondary">
-            <MotionDiv
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}>
-                <h3 className="text-center text-lg text-white">Contact Me</h3>
-                <h1 className="text-center text-white font-bold mb-10 leading-[45px] sm:leading-[75px] text-subTitle sm:text-title  ">
-                    Let's Get in Touch
-                </h1>
-            </MotionDiv>
-
-            <div className=" grid grid-cols-1 lg:grid-cols-2 lg:gap-10 gap-5 ">
-                <MotionDiv
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                        duration: 0.8,
-                        ease: 'easeInOut',
-                        delay: 0.2
-                    }}
-                    className="bg-white h-fit p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold">Hotline 24/7</h3>
-                    <p className="text-2xl font-semibold mb-6">
-                        (+66) 0618502916
-                    </p>
-                    <p className="mb-2">
-                        Address:{' '}
-                        <span className="opacity-70 text-textColor">
-                            Soi Ramkhamhaeng 50, Bang Kapi, Bangkok
+            id="contact"
+            className="pt-20 md:pt-32 pb-16 md:pb-24 border-t border-borderGlass relative bg-gradient-to-b from-transparent to-surface/40">
+            <div className="container">
+                {/* Eyebrow & Title */}
+                <div className="mb-14 text-center md:text-left">
+                    <MotionH2
+                        className="text-xs font-mono tracking-widest uppercase text-champagne mb-3"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}>
+                        06 / Collaboration & Inquiries
+                    </MotionH2>
+                    <MotionH1
+                        className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.1 }}>
+                        Let's Discuss Next{' '}
+                        <span className="editorial-serif font-normal italic champagne-gradient-text">
+                            Opportunities
                         </span>
-                    </p>
-                    <p className="mb-2">
-                        Email:{' '}
-                        <span className="opacity-70 text-textColor">
-                            heinh9540@gmail.com
+                    </MotionH1>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+                    {/* Left Info Card */}
+                    <MotionDiv
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
+                        className="lg:col-span-5 glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass flex flex-col justify-between">
+                        <div>
+                            <span className="text-xs font-mono uppercase tracking-widest text-champagne">
+                                Direct Contact Channels
+                            </span>
+                            <h3 className="text-2xl font-bold text-white mt-2 mb-6">
+                                Connect With Me
+                            </h3>
+                            <p className="text-sm text-textColor/80 leading-relaxed font-light mb-8">
+                                Whether you have an open Full-Stack Software
+                                Engineering position, a high-impact contract, or
+                                require technical consultation, I look forward
+                                to hearing from you.
+                            </p>
+
+                            <div className="flex flex-col gap-5">
+                                {/* Email with copy button */}
+                                <div className="p-4 rounded-xl bg-surface border border-borderGlass flex items-center justify-between group hover:border-champagne/40 transition-colors">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-9 h-9 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center">
+                                            <HiOutlineMail className="text-lg" />
+                                        </div>
+                                        <div>
+                                            <span className="block text-[11px] font-mono uppercase text-textMuted">
+                                                Electronic Mail
+                                            </span>
+                                            <a
+                                                href="mailto:heinh9540@gmail.com"
+                                                className="text-sm font-semibold text-white hover:text-champagne transition-colors">
+                                                heinh9540@gmail.com
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <button
+                                        onClick={copyEmail}
+                                        type="button"
+                                        aria-label="Copy Email"
+                                        className="p-2 rounded-lg bg-surfaceLight hover:bg-champagne/20 text-champagne transition-colors">
+                                        {isCopied ? (
+                                            <FaCheck className="text-xs text-emerald-400" />
+                                        ) : (
+                                            <HiOutlineClipboardCopy className="text-sm" />
+                                        )}
+                                    </button>
+                                </div>
+
+                                {/* Phone */}
+                                <div className="p-4 rounded-xl bg-surface border border-borderGlass flex items-center gap-3">
+                                    <div className="w-9 h-9 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center">
+                                        <HiOutlinePhone className="text-lg" />
+                                    </div>
+                                    <div>
+                                        <span className="block text-[11px] font-mono uppercase text-textMuted">
+                                            Direct Line
+                                        </span>
+                                        <a
+                                            href="tel:+660618502916"
+                                            className="text-sm font-semibold text-white hover:text-champagne transition-colors">
+                                            09771955315
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Location */}
+                                <div className="p-4 rounded-xl bg-surface border border-borderGlass flex items-center gap-3">
+                                    <div className="w-9 h-9 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center">
+                                        <HiOutlineLocationMarker className="text-lg" />
+                                    </div>
+                                    <div>
+                                        <span className="block text-[11px] font-mono uppercase text-textMuted">
+                                            Base Location
+                                        </span>
+                                        <p className="text-sm font-semibold text-white">
+                                            Yangon, Myanmar (Open to Global
+                                            Relocation & Remote)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono text-textMuted">
+                            <span>Availability: Immediate</span>
+                            <span className="text-champagne">Mon — Sat</span>
+                        </div>
+                    </MotionDiv>
+
+                    {/* Right Form Card */}
+                    <MotionDiv
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
+                        className="lg:col-span-7 glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass">
+                        <span className="text-xs font-mono uppercase tracking-widest text-champagne">
+                            Send Direct Transmission
                         </span>
+                        <h3 className="text-2xl font-bold text-white mt-2 mb-6">
+                            Project Inquiry or Message
+                        </h3>
+
+                        <form
+                            onSubmit={handleSubmit(onSubmit)}
+                            className="space-y-5">
+                            {/* Name Field */}
+                            <div>
+                                <label className="block text-xs font-mono uppercase tracking-wider text-textMuted mb-2">
+                                    Your Name / Entity
+                                </label>
+                                <input
+                                    {...register('name', {
+                                        required: 'Name is required',
+                                        minLength: {
+                                            value: 3,
+                                            message:
+                                                'Name must be at least 3 characters'
+                                        }
+                                    })}
+                                    className={`bg-surface/80 text-white w-full outline-none rounded-xl p-3.5 border transition-all duration-300 placeholder:text-textMuted/50 text-sm ${
+                                        errors.name
+                                            ? 'border-red-400 focus:border-red-500'
+                                            : 'border-borderGlass focus:border-champagne focus:ring-1 focus:ring-champagne/40'
+                                    }`}
+                                    placeholder="e.g. Jane Doe or Acme Corp"
+                                />
+                                {errors.name && (
+                                    <p className="text-red-400 text-xs mt-1.5 font-mono">
+                                        {errors.name.message}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Email Field */}
+                            <div>
+                                <label className="block text-xs font-mono uppercase tracking-wider text-textMuted mb-2">
+                                    Electronic Mail Address
+                                </label>
+                                <input
+                                    {...register('email', {
+                                        required: 'Email is required',
+                                        pattern: {
+                                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                            message:
+                                                'Invalid email address format'
+                                        }
+                                    })}
+                                    className={`bg-surface/80 text-white w-full outline-none rounded-xl p-3.5 border transition-all duration-300 placeholder:text-textMuted/50 text-sm ${
+                                        errors.email
+                                            ? 'border-red-400 focus:border-red-500'
+                                            : 'border-borderGlass focus:border-champagne focus:ring-1 focus:ring-champagne/40'
+                                    }`}
+                                    placeholder="e.g. name@company.com"
+                                    type="email"
+                                />
+                                {errors.email && (
+                                    <p className="text-red-400 text-xs mt-1.5 font-mono">
+                                        {errors.email.message}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Message Field */}
+                            <div>
+                                <label className="block text-xs font-mono uppercase tracking-wider text-textMuted mb-2">
+                                    Message Overview
+                                </label>
+                                <textarea
+                                    {...register('message', {
+                                        required: 'Message is required',
+                                        minLength: {
+                                            value: 10,
+                                            message:
+                                                'Please provide at least 10 characters'
+                                        }
+                                    })}
+                                    rows={4}
+                                    className={`bg-surface/80 text-white block w-full outline-none rounded-xl p-3.5 border transition-all duration-300 placeholder:text-textMuted/50 text-sm ${
+                                        errors.message
+                                            ? 'border-red-400 focus:border-red-500'
+                                            : 'border-borderGlass focus:border-champagne focus:ring-1 focus:ring-champagne/40'
+                                    }`}
+                                    placeholder="Describe your project, timeline, or engineering inquiry..."
+                                />
+                                {errors.message && (
+                                    <p className="text-red-400 text-xs mt-1.5 font-mono">
+                                        {errors.message.message}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div className="pt-2 flex items-center justify-between">
+                                <SubmitBtn
+                                    text="Dispatch Message ↗"
+                                    isLoading={isLoading}
+                                />
+                                <span className="text-xs text-textMuted font-mono hidden sm:inline">
+                                    Prompt Response Within 24 Hours
+                                </span>
+                            </div>
+                        </form>
+                    </MotionDiv>
+                </div>
+
+                {/* Editorial Footer */}
+                <div className="mt-20 pt-8 border-t border-borderGlass flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-textMuted">
+                    <p>
+                        © {new Date().getFullYear()} Hein Htet Zaw — Engineered
+                        with Next.js & TypeScript.
                     </p>
-                    <p className="mb-2">
-                        Work Hour:{' '}
-                        <span className="opacity-70 text-textColor">
-                            Mon - Sat: 9:00 - 18:00
-                        </span>
-                    </p>
-                </MotionDiv>
-
-                <MotionDiv
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                        duration: 0.8,
-                        ease: 'easeInOut',
-                        delay: 0.4
-                    }}
-                    className="w-full">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* Name Field */}
-                        <input
-                            {...register('name', {
-                                required: 'Name is required',
-                                minLength: {
-                                    value: 3,
-                                    message:
-                                        'Name must be at least 3 characters'
-                                }
-                            })}
-                            className={`bg-white mb-4 w-full outline-none rounded-lg p-3 ${
-                                errors.name ? 'border border-red-500' : ''
-                            }`}
-                            placeholder="Name"
-                        />
-                        {errors.name && (
-                            <p className="text-red-500 text-sm">
-                                {errors.name.message}
-                            </p>
-                        )}
-
-                        {/* Email Field */}
-                        <input
-                            {...register('email', {
-                                required: 'Email is required',
-                                pattern: {
-                                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                                    message: 'Invalid email address'
-                                }
-                            })}
-                            className={`bg-white w-full mb-4 outline-none rounded-lg p-3 ${
-                                errors.email ? 'border border-red-500' : ''
-                            }`}
-                            placeholder="Email"
-                            type="email"
-                        />
-                        {errors.email && (
-                            <p className="text-red-500 text-sm">
-                                {errors.email.message}
-                            </p>
-                        )}
-
-                        {/* Message Field */}
-                        <textarea
-                            {...register('message', {
-                                required: 'Message is required',
-                                minLength: {
-                                    value: 10,
-                                    message:
-                                        'Message must be at least 10 characters'
-                                }
-                            })}
-                            rows={3}
-                            className={` bg-white block w-full outline-none rounded-lg p-3 ${
-                                errors.message ? 'border border-red-500' : ''
-                            }  `}
-                            placeholder="Message"
-                        />
-                        {errors.message && (
-                            <p className="text-red-500 text-sm">
-                                {errors.message.message}
-                            </p>
-                        )}
-                        <SubmitBtn
-                            text="Send Email"
-                            isLoading={isLoading}
-                        />
-                    </form>
-                </MotionDiv>
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (
+                                typeof window !== 'undefined' &&
+                                (window as any).locomotiveScroll
+                            ) {
+                                (window as any).locomotiveScroll.scrollTo(0, {
+                                    duration: 1.1
+                                });
+                            } else {
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        }}
+                        className="text-champagne hover:underline transition-colors">
+                        Return to Top ↑
+                    </a>
+                </div>
             </div>
         </section>
     );

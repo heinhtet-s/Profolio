@@ -1,60 +1,182 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100900;1,100..900&display=swap');
-* {
-    font-family: 'Work Sans', sans-serif;
-}
-html {
-    overflow-x: hidden;
-    width: 100%;
-}
-body {
-    margin: 0px;
 
-    /* cursor: wait; Add after Preloader*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-dark: #090d16;
+    --surface: #121826;
+    --champagne: #e2ceac;
+    --champagne-light: #f5e9d6;
+    --champagne-dark: #c9a979;
+}
+
+/* Lenis / Locomotive Scroll Optimization */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+* {
+    font-family:
+        'Plus Jakarta Sans',
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: #e2ceac;
+    color: #090d16;
+}
+
+html {
+    width: 100%;
+    background-color: #090d16;
+    color: #cbd5e1;
+}
+
+body {
+    margin: 0;
+    background-color: #090d16;
+    color: #cbd5e1;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: clip;
+}
+
+/* GPU Hardware-Accelerated Ambient Backdrop (Eliminates scroll repaints) */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: radial-gradient(
+            at 15% 10%,
+            rgba(226, 206, 172, 0.05) 0px,
+            transparent 40%
+        ),
+        radial-gradient(at 85% 60%, rgba(30, 41, 66, 0.35) 0px, transparent 50%),
+        radial-gradient(
+            at 50% 90%,
+            rgba(226, 206, 172, 0.03) 0px,
+            transparent 40%
+        );
+    will-change: transform;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+    background: #1e2942;
+    border-radius: 4px;
+    border: 1px solid rgba(226, 206, 172, 0.1);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #e2ceac;
 }
 
 @layer components {
-    .primaryBtn {
-        @apply bg-secondary text-white hover:bg-secondaryHover px-5  duration-700 font-medium transition-all	 text-lg  cursor-pointer	 rounded-[50px] py-2;
+    .editorial-serif {
+        font-family: 'Playfair Display', Georgia, serif;
     }
+
+    .tech-mono {
+        font-family: 'Space Grotesk', monospace;
+    }
+
+    .gold-gradient-text {
+        background: linear-gradient(
+            135deg,
+            #f8fafc 0%,
+            #f5e9d6 40%,
+            #e2ceac 80%,
+            #c9a979 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .champagne-gradient-text {
+        background: linear-gradient(
+            135deg,
+            #fff 10%,
+            #e2ceac 60%,
+            #b89660 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .primaryBtn {
+        @apply bg-[#E2CEAC] text-[#090D16] hover:bg-[#F5E9D6] hover:shadow-[0_0_25px_rgba(226,206,172,0.4)] px-6 duration-300 font-semibold transition-all text-sm tracking-wide cursor-pointer rounded-full py-2.5 inline-flex items-center justify-center gap-2;
+    }
+
+    .outlineBtn {
+        @apply border border-[rgba(226,206,172,0.35)] text-[#E2CEAC] hover:bg-[rgba(226,206,172,0.08)] hover:border-[#E2CEAC] px-6 duration-300 font-medium transition-all text-sm tracking-wide cursor-pointer rounded-full py-2.5 inline-flex items-center justify-center gap-2;
+    }
+
+    .glass-card {
+        @apply bg-[#121826]/80 backdrop-blur-md border border-[rgba(226,206,172,0.12)] hover:border-[rgba(226,206,172,0.3)] transition-all duration-500 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.7)];
+    }
+
     .container {
-        padding-left: 16px; /* Default padding for small screens */
-        padding-right: 16px;
-        max-width: 100%; /* Full width by default */
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
 
         @screen sm {
-            padding-left: 24px; /* Slightly more padding on small screens */
-            padding-right: 24px;
-            width: 100%;
-            max-width: 100%; /* Full width by default */
+            padding-left: 32px;
+            padding-right: 32px;
         }
 
         @screen md {
-            padding-left: 40px; /* Adjust padding for medium screens */
-            padding-right: 40px;
-            width: 100%;
-            max-width: 100%; /* Full width by default */
+            padding-left: 48px;
+            padding-right: 48px;
         }
 
         @screen lg {
-            padding-left: 80px; /* Larger padding for large screens */
-            padding-right: 80px;
-            max-width: 1200px; /* Constrain width for large screens */
+            padding-left: 64px;
+            padding-right: 64px;
+            max-width: 1200px;
         }
 
         @screen xl {
-            max-width: 1510px; /* Apply the max-width for extra-large screens */
+            max-width: 1380px;
         }
     }
 }
+
 .spinner {
-    @apply border-2 border-t-2 border-t-white border-secondary rounded-full;
+    @apply border-2 border-t-2 border-t-[#090D16] border-[#E2CEAC] rounded-full;
 }
 
 .custom-cursor {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(226, 206, 172, 0.4);
 }

@@ -3,16 +3,18 @@
 import { JSX } from 'react';
 import { BsBootstrapFill } from 'react-icons/bs';
 import { FaDocker, FaNodeJs } from 'react-icons/fa';
-import { IoLogoFirebase, IoLogoVue } from 'react-icons/io5';
+import { IoLogoFirebase } from 'react-icons/io5';
 import { RiNextjsFill, RiTailwindCssFill } from 'react-icons/ri';
 import {
     SiExpress,
     SiKubernetes,
     SiMongodb,
     SiMysql,
+    SiNestjs,
     SiSocketdotio,
     SiTypescript
 } from 'react-icons/si';
+
 import PROJECTIMAG1 from '../../public/image/project8.webp';
 import PROJECTIMAG2 from '../../public/image/project_image6.webp';
 import PROJECTIMAG3 from '../../public/image/project2.webp';
@@ -68,48 +70,47 @@ const PROJECTCARDDATA = [
 ];
 const CAREERINFO = [
     {
-        title: ' Fullstack Developer at Viabells',
-        duration: 'August 2023 - Present',
-        dec: ' As a Fullstack Developer, I work closely with the team to ensure that both the front-end and back-end are well integrated and align with the product’s goals. I focus on building reliable and efficient systems, helping the startup succeed by providing practical, user-focused solutions.'
+        title: 'Full-Stack Software Engineer at Viabells',
+        duration: 'August 2023 — Present',
+        dec: 'Lead end-to-end full-stack feature architecture across React, Next.js, and Node.js. Coordinate across product and infrastructure to deliver scalable, performant services, improving response times and user engagement for high-growth startup ventures.'
     },
     {
-        title: 'Web Developer at Light Idea',
-        duration: 'July 2022 - August 2023',
-        dec: 'I played a key role in enhancing the Flash Mall EPOS system by leading the integration of new features using Firebase and React.js. Additionally, I built a complete delivery app dashboard from the ground up with Vue.js, covering restaurant, order, driver, and promotion management. I also developed a powerful EPOS system for a bar and restaurant, ensuring smooth operations and high customer satisfaction.'
+        title: 'Full-Stack Web Developer at Light Idea',
+        duration: 'July 2022 — August 2023',
+        dec: 'Spearheaded core feature development for the FlashMall EPOS platform utilizing Firebase, React.js, and TypeScript. Built an end-to-end delivery dashboard from the ground up with NestJS and modern React, managing restaurants, real-time orders, and driver logistics.'
     },
     {
-        title: 'Frontend Developer at Dynasty',
-        duration: 'November 2021 - June 2022',
-        dec: 'I created and maintained multiple static websites using HTML5, CSS3, JavaScript, and React. I designed and implemented custom client dashboards with Material UI components and consistently applied strong problem-solving skills in day-to-day code maintenance, debugging, and client support.'
+        title: 'Frontend Engineer at Dynasty',
+        duration: 'November 2021 — June 2022',
+        dec: 'Engineered high-performance responsive web applications using React, TypeScript, and modern CSS architectures. Implemented custom administrative dashboards with robust component libraries and state flows.'
     },
     {
-        title: 'Frontend Instructor ',
-        duration: 'January 2022 - October 2022',
-        dec: 'As an Instructor, I taught over 50 students web development, covering HTML, CSS, JavaScript, jQuery, and React. Additionally, I developed and administered assessments and coding challenges to track and evaluate their learning and progress.'
+        title: 'Frontend Engineering Instructor',
+        duration: 'January 2022 — October 2022',
+        dec: 'Mentored and trained over 50 aspiring software developers in modern JavaScript, HTML5/CSS3 architecture, React fundamentals, and collaborative Git workflows.'
     }
 ];
 const EDUINFO = [
     {
-        title: 'BSC (Hons) Business Compution and Information Systems',
-        duration: '2023 - Present',
-        uniName: 'University of Central Lancashire , UK'
+        degree: "Bachelor's Degree",
+        title: 'BSc (Hons) Business Computing and Information Systems',
+        duration: '2025',
+        uniName: 'University of Central Lancashire'
     },
     {
-        title: 'NCC Level 5 Diploma in Compution ',
+        degree: 'Level 5 Diploma',
+        title: 'NCC Level 5 Diploma in Computing',
         duration: '2024',
         uniName: 'Twinkle University'
     },
     {
-        title: 'NCC Level 4 Diploma in Compution ',
+        degree: 'Level 4 Diploma',
+        title: 'NCC Level 4 Diploma in Computing',
         duration: '2023',
         uniName: 'Twinkle University'
-    },
-    {
-        title: "Google's UX Design",
-        duration: '2024',
-        uniName: 'Google Coursera'
     }
 ];
+
 const FLASHMALL: ProjectProps = {
     title: 'FlashMall EPOS Web Application',
     sections: [
@@ -125,10 +126,10 @@ const FLASHMALL: ProjectProps = {
         },
         {
             description:
-                'The platform uses modern technologies to provide a smooth and efficient user experience. Vue.js powers the dynamic and responsive frontend for easy navigation, while Bootstrap ensures a clean, mobile-friendly design. On the backend, Firebase and Firestore enable real-time data management, secure storage, and instant synchronization. This setup ensures the platform is reliable, scalable, and perfectly suited for retail and warehouse management needs.',
+                'The platform uses modern technologies to provide a smooth and efficient user experience. NestJS powers the modular and scalable architecture for high performance, while responsive design standards ensure a clean, mobile-friendly interface. On the backend, NestJS and Firebase enable real-time data management, secure storage, and instant synchronization. This setup ensures the platform is reliable, scalable, and perfectly suited for retail and warehouse management needs.',
             technologies: [
                 {
-                    icon: <IoLogoVue fontSize={'40px'} />
+                    icon: <SiNestjs fontSize={'40px'} />
                 },
                 {
                     icon: <SiTypescript fontSize={'40px'} />
@@ -148,8 +149,9 @@ const FLASHMALL: ProjectProps = {
         {
             responsibilities: [
                 'Acted as the Full Stack Developer for the project, seamlessly integrating backend and frontend systems to ensure streamlined workflows and optimized functionality across all components.',
-                'Developed a responsive and interactive user interface using Vue.js and Bootstrap, delivering a smooth user experience across devices.',
-                'Utilized Firebase and Firestore to build a real-time, scalable backend for sales processing and inventory tracking.',
+                'Developed scalable API services and modular architecture using NestJS and TypeScript, delivering robust data flow across devices.',
+                'Utilized Firebase and Firestore alongside NestJS to build a real-time, scalable backend for sales processing and inventory tracking.',
+
                 'Implemented key EPOS features such as inventory and warehouse management, CRM, and payment processing.',
                 'Implemented a feature for generating and printing vouchers, ensuring accuracy and a seamless user experience.',
                 'Enforced Firebase security rules to safeguard data and implemented secure authentication and authorization mechanisms for user access control.'
@@ -306,7 +308,7 @@ const SDAX: ProjectProps = {
         }
     ]
 };
-const NAVITEM = ['About', 'Experience', 'Projects', 'Contact'];
+const NAVITEM = ['About', 'Expertise', 'Projects', 'Experience', 'Contact'];
 export {
     PROJECTCARDDATA,
     CAREERINFO,

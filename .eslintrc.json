@@ -27,9 +27,10 @@
                 "parser": "typescript"
             }
         ],
-        "indent": ["warn", 4],
+        "indent": "off",
         "react/react-in-jsx-scope": "off",
         "react/destructuring-assignment": "off",
-        "no-nested-ternary": "warn"
+        "no-nested-ternary": "warn",
+        "no-undef": "off"
     }
 }
