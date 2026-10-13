@@ -1,7 +1,7 @@
 'use client';
 import { AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
-import { MotionDiv, MotionNav, MotionUl } from '@/lib/utils';
+import { MotionDiv, MotionUl } from '@/lib/utils';
 import { HiOutlineMenu, HiX } from 'react-icons/hi';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { useAnimate, usePresence } from 'framer-motion';
@@ -80,18 +80,12 @@ const Navbar = () => {
     return (
         <>
             {/* Edge-to-Edge Full-Width Glass Header */}
-            <MotionNav
+            <header
                 className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
                     isScrolled
                         ? 'bg-[#090D16]/85 backdrop-blur-xl border-b border-champagne/15 shadow-[0_12px_36px_-10px_rgba(0,0,0,0.85)] py-3 sm:py-3.5'
-                        : 'bg-[#090D16]/60 backdrop-blur-md border-b border-white/[0.06] py-4 sm:py-5'
-                }`}
-                initial={{ y: -20 }}
-                animate={{ y: 0 }}
-                transition={{
-                    duration: 0.35,
-                    ease: 'easeOut'
-                }}>
+                        : 'bg-[#090D16]/60 backdrop-blur-md border-b border-white/[0.06] py-3.5 sm:py-4'
+                }`}>
                 {/* Hairline champagne gradient accent line along bottom */}
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-champagne/25 to-transparent pointer-events-none" />
 
@@ -188,7 +182,7 @@ const Navbar = () => {
                         </button>
                     </div>
                 </div>
-            </MotionNav>
+            </header>
 
             {/* Mobile Drawer */}
             <AnimatePresence>
