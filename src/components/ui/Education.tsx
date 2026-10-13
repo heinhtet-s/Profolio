@@ -1,6 +1,5 @@
 'use client';
 import { EDUINFO } from '@/lib/constant';
-import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
 import { HiOutlineAcademicCap } from 'react-icons/hi';
 
 type EduComponentProps = {
@@ -20,23 +19,16 @@ const EduComponent = ({
     const isBachelor = data.degree?.toLowerCase().includes('bachelor');
 
     return (
-        <MotionDiv
+        <div
             key={index}
-            className={`glass-card p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
+            className={`glass-card p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-[0_12px_24px_-8px_rgba(226,206,172,0.12)] group ${
                 isBachelor
                     ? 'border-champagne/40 bg-surface/90 shadow-[0_0_30px_rgba(226,206,172,0.12)] hover:border-champagne'
                     : 'border-borderGlass hover:border-champagne/40'
-            }`}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-                duration: 0.5,
-                delay: index * 0.1
-            }}>
+            }`}>
             <div className="flex items-start justify-between gap-3 mb-5">
                 <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
+                    className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 ${
                         isBachelor
                             ? 'bg-champagne/20 text-champagne border border-champagne/40 shadow-sm'
                             : 'bg-champagne/10 text-champagne'
@@ -61,7 +53,7 @@ const EduComponent = ({
             </div>
 
             <div>
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2 leading-snug">
+                <h3 className="text-base sm:text-lg font-bold text-white mb-2 leading-snug group-hover:text-champagne transition-colors">
                     {data?.title}
                 </h3>
                 <p
@@ -73,7 +65,7 @@ const EduComponent = ({
                     {data?.uniName}
                 </p>
             </div>
-        </MotionDiv>
+        </div>
     );
 };
 
@@ -82,25 +74,15 @@ const EducationSection = () => {
         <section className="pt-20 md:pt-32 pb-16 md:pb-24 border-t border-borderGlass">
             {/* Eyebrow & Title */}
             <div className="mb-14">
-                <MotionH2
-                    className="text-xs font-mono tracking-widest uppercase text-champagne mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}>
+                <span className="text-xs font-mono tracking-widest uppercase text-champagne block mb-3">
                     05 / Academic Credentials
-                </MotionH2>
-                <MotionH1
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.1 }}>
+                </span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
                     Education & Professional{' '}
                     <span className="editorial-serif font-normal italic champagne-gradient-text">
                         Accreditations
                     </span>
-                </MotionH1>
+                </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

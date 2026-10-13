@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
 import SubmitBtn from '../share/SubmitBtn';
 import toast from 'react-hot-toast';
 import {
@@ -64,35 +63,20 @@ const ContactInfo: React.FC = () => {
             <div className="container">
                 {/* Eyebrow & Title */}
                 <div className="mb-14 text-center md:text-left">
-                    <MotionH2
-                        className="text-xs font-mono tracking-widest uppercase text-champagne mb-3"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}>
+                    <span className="text-xs font-mono tracking-widest uppercase text-champagne block mb-3">
                         06 / Collaboration & Inquiries
-                    </MotionH2>
-                    <MotionH1
-                        className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.1 }}>
-                        Let's Discuss Next{' '}
+                    </span>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+                        Let&apos;s Discuss Next{' '}
                         <span className="editorial-serif font-normal italic champagne-gradient-text">
                             Opportunities
                         </span>
-                    </MotionH1>
+                    </h2>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
                     {/* Left Info Card */}
-                    <MotionDiv
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
-                        className="lg:col-span-5 glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass flex flex-col justify-between">
+                    <div className="lg:col-span-5 glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass hover:border-champagne/35 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <span className="text-xs font-mono uppercase tracking-widest text-champagne">
                                 Direct Contact Channels
@@ -177,15 +161,10 @@ const ContactInfo: React.FC = () => {
                             <span>Availability: Immediate</span>
                             <span className="text-champagne">Mon — Sat</span>
                         </div>
-                    </MotionDiv>
+                    </div>
 
                     {/* Right Form Card */}
-                    <MotionDiv
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
-                        className="lg:col-span-7 glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass">
+                    <div className="lg:col-span-7 glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass hover:border-champagne/35 transition-all duration-300">
                         <span className="text-xs font-mono uppercase tracking-widest text-champagne">
                             Send Direct Transmission
                         </span>
@@ -292,7 +271,7 @@ const ContactInfo: React.FC = () => {
                                 </span>
                             </div>
                         </form>
-                    </MotionDiv>
+                    </div>
                 </div>
 
                 {/* Editorial Footer */}

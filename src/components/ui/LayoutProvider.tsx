@@ -24,15 +24,16 @@ const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
 
                 const instance = new LocomotiveScroll({
                     lenisOptions: {
-                        duration: 1.1,
+                        duration: 1.2,
                         easing: (t) =>
                             Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                         orientation: 'vertical',
                         gestureOrientation: 'vertical',
                         smoothWheel: true,
-                        wheelMultiplier: 1,
-                        touchMultiplier: 1.5,
-                        infinite: false
+                        wheelMultiplier: 1.05,
+                        touchMultiplier: 1.8,
+                        infinite: false,
+                        syncTouch: false
                     }
                 });
 

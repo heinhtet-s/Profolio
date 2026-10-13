@@ -1,13 +1,7 @@
 'use client';
-import { AnimatePresence, useInView } from 'framer-motion';
-import React, {
-    useState,
-    useRef,
-    useEffect,
-    Dispatch,
-    SetStateAction
-} from 'react';
-import { MotionDiv, MotionLi, MotionNav, MotionUl } from '@/lib/utils';
+import { AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import { MotionDiv, MotionNav, MotionUl } from '@/lib/utils';
 import { HiOutlineMenu, HiX } from 'react-icons/hi';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { useAnimate, usePresence } from 'framer-motion';
@@ -15,8 +9,6 @@ import Link from 'next/link';
 import { NAVITEM } from '@/lib/constant';
 
 const Navbar = () => {
-    const ref = useRef<HTMLElement>(null!);
-    const isInView = useInView(ref, { once: true });
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState<string>('');
@@ -89,17 +81,16 @@ const Navbar = () => {
         <>
             {/* Edge-to-Edge Full-Width Glass Header */}
             <MotionNav
-                ref={ref}
                 className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
                     isScrolled
                         ? 'bg-[#090D16]/85 backdrop-blur-xl border-b border-champagne/15 shadow-[0_12px_36px_-10px_rgba(0,0,0,0.85)] py-3 sm:py-3.5'
                         : 'bg-[#090D16]/60 backdrop-blur-md border-b border-white/[0.06] py-4 sm:py-5'
                 }`}
-                initial={{ y: -60, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
                 transition={{
-                    y: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
-                    opacity: { duration: 0.5 }
+                    duration: 0.35,
+                    ease: 'easeOut'
                 }}>
                 {/* Hairline champagne gradient accent line along bottom */}
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-champagne/25 to-transparent pointer-events-none" />
@@ -131,11 +122,7 @@ const Navbar = () => {
                     </Link>
 
                     {/* Center Navigation Links (Desktop) */}
-                    <MotionUl
-                        className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#121826]/60 border border-white/[0.06] backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]"
-                        initial={{ opacity: 0 }}
-                        animate={isInView ? { opacity: 1 } : {}}
-                        transition={{ duration: 0.8, delay: 0.1 }}>
+                    <ul className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#121826]/60 border border-white/[0.06] backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
                         {NAVITEM.map((item, index) => {
                             const isCurrent =
                                 activeSection === item.toLowerCase();
@@ -149,21 +136,11 @@ const Navbar = () => {
                                             ? 'text-champagne bg-champagne/15 border border-champagne/30 shadow-[0_0_15px_rgba(226,206,172,0.15)] font-semibold'
                                             : 'text-textColor hover:text-white hover:bg-white/5 border border-transparent'
                                     }`}>
-                                    <MotionLi
-                                        initial={{ y: -6, opacity: 0 }}
-                                        animate={
-                                            isInView ? { y: 0, opacity: 1 } : {}
-                                        }
-                                        transition={{
-                                            duration: 0.4,
-                                            delay: index * 0.05 + 0.1
-                                        }}>
-                                        {item}
-                                    </MotionLi>
+                                    <span>{item}</span>
                                 </Link>
                             );
                         })}
-                    </MotionUl>
+                    </ul>
 
                     {/* Right Actions & Social Links */}
                     <div className="flex items-center gap-2.5 sm:gap-3">

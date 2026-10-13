@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
 import {
     SiReact,
     SiNextdotjs,
@@ -53,16 +52,16 @@ const BACKEND_SKILLS: Skill[] = [
 
 const SkillItem = ({ skill }: { skill: Skill }) => {
     return (
-        <div className="flex items-center justify-between p-3.5 rounded-xl bg-surface/60 border border-borderGlass hover:border-champagne/40 hover:bg-surfaceLight/80 transition-all duration-300 group">
+        <div className="flex items-center justify-between p-3.5 rounded-xl bg-surface/60 border border-borderGlass hover:border-champagne/45 hover:bg-surfaceLight/90 hover:-translate-y-1 hover:shadow-[0_8px_20px_-6px_rgba(226,206,172,0.18)] transition-all duration-200 group cursor-default">
             <div className="flex items-center gap-3">
-                <div className="text-xl text-textMuted group-hover:text-champagne transition-colors">
+                <div className="text-xl text-textMuted group-hover:text-champagne group-hover:scale-110 transition-all duration-200">
                     {skill.icon}
                 </div>
                 <span className="text-sm font-medium text-white group-hover:text-champagneLight transition-colors">
                     {skill.title}
                 </span>
             </div>
-            <span className="text-[11px] font-mono uppercase tracking-wider text-champagne/80 bg-champagne/10 px-2.5 py-0.5 rounded-full border border-champagne/20">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-champagne/80 bg-champagne/10 px-2.5 py-0.5 rounded-full border border-champagne/20 group-hover:border-champagne/40 group-hover:bg-champagne/20 transition-colors">
                 {skill.level}
             </span>
         </div>
@@ -76,38 +75,23 @@ const ExpertiseSection = () => {
             id="expertise">
             {/* Eyebrow & Title */}
             <div className="mb-14">
-                <MotionH2
-                    className="text-xs font-mono tracking-widest uppercase text-champagne mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}>
+                <span className="text-xs font-mono tracking-widest uppercase text-champagne block mb-3">
                     02 / Technical Stack & Proficiency
-                </MotionH2>
-                <MotionH1
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.1 }}>
+                </span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
                     Architectural & Engineering{' '}
                     <span className="editorial-serif font-normal italic champagne-gradient-text">
                         Capabilities
                     </span>
-                </MotionH1>
+                </h2>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
                 {/* Frontend Architecture Card */}
-                <MotionDiv
-                    className="glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass hover:border-champagne/30 transition-all duration-500 shadow-2xl relative overflow-hidden"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}>
+                <div className="glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass hover:border-champagne/35 transition-all duration-500 shadow-2xl relative overflow-hidden group">
                     <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
                         <div>
-                            <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                            <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight group-hover:text-champagne transition-colors">
                                 Frontend Architecture & UI
                             </h3>
                             <p className="text-xs text-textMuted mt-1 font-mono">
@@ -115,7 +99,7 @@ const ExpertiseSection = () => {
                                 accessibility
                             </p>
                         </div>
-                        <span className="text-xs font-mono text-champagne/80 bg-surface px-3 py-1 rounded-full border border-borderGlass">
+                        <span className="text-xs font-mono text-champagne/80 bg-surface px-3 py-1 rounded-full border border-borderGlass group-hover:border-champagne/30 transition-colors">
                             Client-Side
                         </span>
                     </div>
@@ -128,18 +112,13 @@ const ExpertiseSection = () => {
                             />
                         ))}
                     </div>
-                </MotionDiv>
+                </div>
 
                 {/* Backend & Cloud Systems Card */}
-                <MotionDiv
-                    className="glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass hover:border-champagne/30 transition-all duration-500 shadow-2xl relative overflow-hidden"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: 0.15 }}>
+                <div className="glass-card p-6 sm:p-8 rounded-2xl border border-borderGlass hover:border-champagne/35 transition-all duration-500 shadow-2xl relative overflow-hidden group">
                     <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
                         <div>
-                            <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                            <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight group-hover:text-champagne transition-colors">
                                 Backend & Distributed Systems
                             </h3>
                             <p className="text-xs text-textMuted mt-1 font-mono">
@@ -147,7 +126,7 @@ const ExpertiseSection = () => {
                                 pipelines
                             </p>
                         </div>
-                        <span className="text-xs font-mono text-champagne/80 bg-surface px-3 py-1 rounded-full border border-borderGlass">
+                        <span className="text-xs font-mono text-champagne/80 bg-surface px-3 py-1 rounded-full border border-borderGlass group-hover:border-champagne/30 transition-colors">
                             Server-Side
                         </span>
                     </div>
@@ -160,7 +139,7 @@ const ExpertiseSection = () => {
                             />
                         ))}
                     </div>
-                </MotionDiv>
+                </div>
             </div>
         </section>
     );

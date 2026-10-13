@@ -1,6 +1,5 @@
 'use client';
 import { CAREERINFO } from '@/lib/constant';
-import { MotionDiv, MotionH1, MotionH2, MotionSection } from '@/lib/utils';
 import { HiOutlineBriefcase } from 'react-icons/hi';
 
 type CareerComponentProps = {
@@ -16,23 +15,16 @@ const CareerComponent = ({
     data: CareerComponentProps;
     index: number;
 }) => (
-    <MotionDiv
+    <div
         key={index}
-        className="relative pl-8 sm:pl-10 pb-10 last:pb-2 border-l border-borderGlass group transition-all duration-300"
-        viewport={{ once: true }}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-            duration: 0.6,
-            delay: index * 0.15
-        }}>
+        className="relative pl-8 sm:pl-10 pb-10 last:pb-2 border-l border-borderGlass group transition-all duration-300">
         {/* Glowing Node Marker */}
-        <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-champagne/40 group-hover:border-champagne group-hover:bg-champagne/20 group-hover:shadow-[0_0_15px_rgba(226,206,172,0.5)] transition-all duration-300 flex items-center justify-center">
+        <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-champagne/40 group-hover:border-champagne group-hover:bg-champagne/20 group-hover:shadow-[0_0_15px_rgba(226,206,172,0.5)] group-hover:scale-110 transition-all duration-300 flex items-center justify-center">
             <span className="w-1.5 h-1.5 rounded-full bg-champagne" />
         </div>
 
         {/* Content Card */}
-        <div className="glass-card p-6 rounded-2xl border border-borderGlass hover:border-champagne/30 transition-all duration-300">
+        <div className="glass-card p-6 rounded-2xl border border-borderGlass hover:border-champagne/40 hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(226,206,172,0.12)] transition-all duration-300">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                 <h3 className="text-lg font-bold text-white group-hover:text-champagne transition-colors">
                     {data?.title}
@@ -46,39 +38,25 @@ const CareerComponent = ({
                 {data?.dec}
             </p>
         </div>
-    </MotionDiv>
+    </div>
 );
 
 const CareerSection = () => {
     return (
-        <MotionSection
+        <section
             id="experience"
-            className="pt-20 md:pt-32 pb-16 md:pb-24 border-t border-borderGlass"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}>
+            className="pt-20 md:pt-32 pb-16 md:pb-24 border-t border-borderGlass">
             {/* Eyebrow & Title */}
             <div className="mb-14">
-                <MotionH2
-                    className="text-xs font-mono tracking-widest uppercase text-champagne mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}>
+                <span className="text-xs font-mono tracking-widest uppercase text-champagne block mb-3">
                     04 / Career Chronology
-                </MotionH2>
-                <MotionH1
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.1 }}>
+                </span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
                     Professional Track Record &{' '}
                     <span className="editorial-serif font-normal italic champagne-gradient-text">
                         Industry Impact
                     </span>
-                </MotionH1>
+                </h2>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -128,7 +106,7 @@ const CareerSection = () => {
                     </div>
                 </div>
             </div>
-        </MotionSection>
+        </section>
     );
 };
 

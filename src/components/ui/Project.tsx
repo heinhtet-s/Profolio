@@ -1,6 +1,5 @@
 'use client';
 import { PROJECTCARDDATA } from '@/lib/constant';
-import { MotionDiv, MotionH1, MotionH2 } from '@/lib/utils';
 import Image, { StaticImageData } from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -34,12 +33,8 @@ const ProjectCardComponent = ({
     const router = useRouter();
 
     return (
-        <MotionDiv
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: index * 0.1 }}
-            className="group cursor-pointer flex flex-col h-full rounded-2xl glass-card overflow-hidden hover:border-champagne/40 transition-all duration-500 hover:-translate-y-1.5"
+        <div
+            className="group cursor-pointer flex flex-col h-full rounded-2xl glass-card overflow-hidden hover:border-champagne/45 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_45px_-12px_rgba(0,0,0,0.85),_0_0_25px_rgba(226,206,172,0.12)]"
             onClick={() => {
                 router.push(data?.link);
             }}
@@ -62,7 +57,7 @@ const ProjectCardComponent = ({
 
                 {/* Floating Category Pill */}
                 <div className="absolute top-4 left-4 z-10">
-                    <span className="text-[11px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-bgDark/80 border border-borderGlass text-champagne backdrop-blur-md">
+                    <span className="text-[11px] font-mono uppercase tracking-widest px-3 py-1 rounded-full bg-bgDark/80 border border-borderGlass text-champagne backdrop-blur-md group-hover:border-champagne/30 transition-colors">
                         {data?.type === 'fullstack'
                             ? 'Full-Stack Architecture'
                             : 'Frontend Engineering'}
@@ -70,7 +65,7 @@ const ProjectCardComponent = ({
                 </div>
 
                 {/* Arrow Action Icon in top right */}
-                <div className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-bgDark/80 border border-borderGlass flex items-center justify-center text-white group-hover:text-champagne group-hover:border-champagne/50 transition-all duration-300">
+                <div className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-bgDark/80 border border-borderGlass flex items-center justify-center text-white group-hover:text-champagne group-hover:border-champagne/50 group-hover:bg-champagne/10 transition-all duration-300">
                     <HiOutlineArrowUpRight className="text-base group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 </div>
             </div>
@@ -95,7 +90,7 @@ const ProjectCardComponent = ({
                     </span>
                 </div>
             </div>
-        </MotionDiv>
+        </div>
     );
 };
 
@@ -110,25 +105,15 @@ const ProjectCardSection = ({
             className="pt-20 md:pt-32 pb-16 md:pb-24 border-t border-borderGlass">
             {/* Eyebrow & Title */}
             <div className="mb-14">
-                <MotionH2
-                    className="text-xs font-mono tracking-widest uppercase text-champagne mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}>
+                <span className="text-xs font-mono tracking-widest uppercase text-champagne block mb-3">
                     03 / Selected Case Studies
-                </MotionH2>
-                <MotionH1
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.1 }}>
+                </span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
                     Production Deployments &{' '}
                     <span className="editorial-serif font-normal italic champagne-gradient-text">
                         Engineered Systems
                     </span>
-                </MotionH1>
+                </h2>
             </div>
 
             {/* Project Grid */}
